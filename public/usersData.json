@@ -1,0 +1,24 @@
+{
+  "users": [
+{
+      "id": 1,
+      "username": "gal",
+      "email": "admin@gal.com",
+      "password": "Gal123456",
+      "fullName": "גל כהן",
+      "birthDate": "1995-05-15",
+      "gender": "male",
+      "profileImage": "/assets/gal-avatar.jpg"
+    },
+    {
+      "id": 2,
+      "username": "lama",
+      "email": "admin@lama.com",
+      "password": "Lama123456",
+      "fullName": "למא חאג'",
+      "birthDate": "1998-08-22",
+      "gender": "female",
+      "profileImage": "/assets/lama-avatar.jpg"
+    }
+  ]
+}

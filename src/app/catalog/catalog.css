@@ -1,0 +1,8 @@
+/* אפשר להוסיף עיצוב נוסף אם צריך */
+.container-fluid {
+  padding: 20px;
+}
+
+.row {
+  min-height: 80vh;
+}

@@ -1,0 +1,32 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">
+      <i class="bi bi-list"></i> קטגוריות
+    </h5>
+  </div>
+  
+  <div class="list-group list-group-flush">
+    
+    <!-- כפתור "כל המוצרים" -->
+    <button 
+      type="button"
+      class="list-group-item list-group-item-action"
+      [class.active]="activeCategoryId === null"
+      (click)="showAllProducts()">
+      <span class="fs-4 me-2">🛍️</span>
+      <strong>כל המוצרים</strong>
+    </button>
+
+    <!-- רשימת קטגוריות -->
+    <button 
+      *ngFor="let category of categories"
+      type="button"
+      class="list-group-item list-group-item-action"
+      [class.active]="activeCategoryId === category.id"
+      (click)="selectCategory(category.id)">
+      <span class="fs-4 me-2">{{ category.icon }}</span>
+      {{ category.name }}
+    </button>
+
+  </div>
+</div>

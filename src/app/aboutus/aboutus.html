@@ -1,0 +1,164 @@
+<div class="about-container" [ngClass]="{'accessible-mode': isAccessible}">
+
+  <button class="accessibility-button" [class.accessible-inactive]="!isAccessible" (click)="toggleAccessibility()"
+    aria-label="הפעלת מצב נגישות">
+    <span class="accessibility-icon">♿</span>
+    <span class="accessibility-text">
+      {{ isAccessible ? 'כבה נגישות' : 'הפעל נגישות' }}
+    </span>
+  </button>
+
+
+  <section class="about-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">אודותינו</h1>
+      <p class="hero-subtitle">הסיפור שלנו, החזון שלנו</p>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <div class="container">
+      <div class="story-content">
+        <h2 class="section-title">הסיפור שלנו</h2>
+        <p class="story-text">
+          ברוכים הבאים ל-LaGal Store - המקום שבו חדשנות פוגשת שירות מעולה. החברה שלנו נוסדה מתוך אהבה
+          לטכנולוגיה ורצון לספק ללקוחותינו את המוצרים המתקדמים ביותר בשוק. אנחנו מאמינים שכל לקוח
+          ראוי לחוויית קנייה מושלמת, מקצועיות ושירות אישי.
+        </p>
+        <p class="story-text">
+          המטרה שלנו היא לא רק למכור מוצרי חשמל, אלא ליצור חוויה שלמה - מהרגע שנכנסים לאתר ועד
+          לשירות לאחר המכירה. אנחנו גאים במבחר הרחב שלנו, במחירים התחרותיים ובשירות הלקוחות המצוין שלנו.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2 class="section-title">הצוות שלנו</h2>
+      <p class="team-intro">
+        פגשו את המייסדים והשותפים שמובילים את החברה להצלחה
+      </p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-image">
+            <img [src]="lamaImage" alt="Lama Haj" class="team-photo">
+            <div class="team-overlay">
+              <div class="overlay-content">
+                <p>מומחית בניהול ופיתוח עסקי</p>
+              </div>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">{{ lamaName }}</h3>
+            <p class="team-role">שותפה מייסדת</p>
+            <p class="team-id">ת.ז: {{ lamaId }}</p>
+            <div class="team-description">
+              <p>
+                למא מובילה את החזון העסקי של החברה ואחראית על פיתוח אסטרטגיות חדשניות
+                לצמיחה. עם ניסיון עשיר בתחום המסחר האלקטרוני והטכנולוגיה, היא מביאה
+                גישה חדשנית ומקצועית לניהול החברה.
+              </p>
+            </div>
+            <div class="team-skills">
+              <span class="skill-tag">ניהול עסקי</span>
+              <span class="skill-tag">אסטרטגיה</span>
+              <span class="skill-tag">חדשנות</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-image">
+            <img [src]="galImage" alt="Gal Katz" class="team-photo">
+            <div class="team-overlay">
+              <div class="overlay-content">
+                <p>מומחה טכנולוגיה ופיתוח</p>
+              </div>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">{{ galName }}</h3>
+            <p class="team-role">שותף מייסד</p>
+            <p class="team-id">ת.ז: {{ galId }}</p>
+            <div class="team-description">
+              <p>
+                גל אחראי על הצד הטכנולוגי והדיגיטלי של החברה. עם מומחיות בפיתוח
+                ותשתיות דיגיטליות, הוא דואג שהאתר והמערכות שלנו יהיו תמיד במצב מושלם
+                ויספקו ללקוחות את החוויה הטובה ביותר.
+              </p>
+            </div>
+            <div class="team-skills">
+              <span class="skill-tag">פיתוח</span>
+              <span class="skill-tag">טכנולוגיה</span>
+              <span class="skill-tag">חווית משתמש</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <h2 class="section-title">הערכים שלנו</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">💎</div>
+          <h3>איכות ללא פשרות</h3>
+          <p>אנחנו מספקים רק מוצרים איכותיים ממותגים מובילים עם אחריות מלאה</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>שירות אישי</h3>
+          <p>כל לקוח מקבל יחס אישי ומקצועי מהצוות המנוסה שלנו</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <h3>מהירות ויעילות</h3>
+          <p>משלוחים מהירים ושירות זמין 24/7 לכל שאלה ובעיה</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌟</div>
+          <h3>חדשנות מתמדת</h3>
+          <p>אנחנו תמיד מחפשים את הטכנולוגיות החדשות והמתקדמות ביותר</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">10,000+</div>
+          <div class="stat-label">לקוחות מרוצים</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5,000+</div>
+          <div class="stat-label">מוצרים במלאי</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">מותגים מובילים</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">שביעות רצון</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>מוכנים להצטרף למשפחה שלנו?</h2>
+        <p>בואו לגלות את המבחר המדהים שלנו ולחוות קנייה שונה</p>
+        <button class="cta-button">לקטלוג המוצרים</button>
+      </div>
+    </div>
+  </section>
+</div>

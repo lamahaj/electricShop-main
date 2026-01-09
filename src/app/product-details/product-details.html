@@ -1,0 +1,116 @@
+<!-- הודעת טעינה -->
+<div *ngIf="isLoading" class="loading-container text-center p-5">
+  <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+    <span class="visually-hidden">טוען...</span>
+  </div>
+  <p class="mt-3 fs-5">טוען פרטי מוצר...</p>
+</div>
+
+<!-- מוצר לא נמצא -->
+<div *ngIf="notFound && !isLoading" class="not-found">
+  <div class="error-icon">😕</div>
+  <h2>אופס! המוצר לא נמצא</h2>
+  <p>המוצר שחיפשת אינו קיים במערכת</p>
+  <button class="back-btn-error" (click)="goBackHome()">
+    חזרה לדף הבית
+  </button>
+</div>
+
+<!-- תוכן המוצר -->
+<div class="details-container" *ngIf="product && !isLoading">
+
+  <div class="product-layout">
+    
+    <!-- עמודה שמאלית - תמונות -->
+    <div class="product-gallery">
+      <div class="main-image">
+        <img [src]="product.image" [alt]="product.name">
+      </div>
+      
+      <div class="image-badges">
+        <span class="badge stock" [class.out]="!product.inStock">
+          {{ product.inStock ? '✅ במלאי' : '❌ אזל מהמלאי' }}
+        </span>
+      </div>
+    </div>
+
+    <!-- עמודה ימנית - פרטים -->
+    <div class="product-details">
+      
+      <!-- כותרת ומידע בסיסי -->
+      <div class="product-header">
+        <span class="category-tag">{{ product.category }}</span>
+        <h1>{{ product.name }}</h1>
+        <p class="brand-name">
+          <span class="brand-icon">🏷️</span>
+          יצרן: <strong>{{ product.brand }}</strong>
+        </p>
+      </div>
+
+      <!-- מחיר -->
+      <div class="price-section">
+        <div class="price-tag">
+          <span class="currency">₪</span>
+          <span class="amount">{{ product.price }}</span>
+        </div>
+        <p class="price-note">כולל מע"מ | משלוח חינם</p>
+      </div>
+
+      <!-- תיאור -->
+      <div class="description-section">
+        <h3><i>📝</i> תיאור המוצר</h3>
+        <p class="description-text">{{ product.description }}</p>
+      </div>
+
+      <!-- מפרט טכני -->
+      <div class="specs-section" *ngIf="product.specifications">
+        <h3><i>⚙️</i> מפרט טכני</h3>
+        <div class="specs-grid">
+          <div class="spec-item" *ngFor="let spec of product.specifications | keyvalue">
+            <span class="spec-label">{{ spec.key }}</span>
+            <span class="spec-value">{{ spec.value }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- מידע נוסף -->
+      <div class="additional-info">
+        <div class="info-card">
+          <div class="info-icon">📦</div>
+          <div class="info-content">
+            <h4>מלאי</h4>
+            <p>{{ product.remainingStock }} יחידות זמינות</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📊</div>
+          <div class="info-content">
+            <h4>נמכרו</h4>
+            <p>{{ product.soldCount }} יחידות ({{ product.salesPercentage }}%)</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🏪</div>
+          <div class="info-content">
+            <h4>מלאי כולל</h4>
+            <p>{{ product.stock }} יחידות סה"כ</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- כפתורי פעולה -->
+      <div class="action-buttons">
+        <button class="buy-btn" [disabled]="!product.inStock">
+          🛒 {{ product.inStock ? 'הוסף לעגלה' : 'אזל מהמלאי' }}
+        </button>
+        <button class="back-btn" (click)="goBackHome()">
+          <span class="arrow">←</span> חזרה לדף הבית
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

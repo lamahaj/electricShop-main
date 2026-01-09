@@ -1,0 +1,83 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo and Name - Right Side -->
+    <div class="navbar-logo">
+      <a routerLink="/">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">LaGal Store</span>
+      </a>
+    </div>
+
+    <!-- Search Bar - Center -->
+    <div class="navbar-search">
+      <span class="search-icon">🔍</span>
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="חפשו מוצרים, מותגים או קטגוריות..."
+      />
+    </div>
+
+    <!-- Navigation Menu - Center & Left -->
+    <div class="navbar-menu" [class.active]="isMenuOpen">
+      <!-- Navigation Links - Center -->
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+            <span class="nav-icon">🏠</span>
+            <span>בית</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/aboutus" routerLinkActive="active" class="nav-link">
+            <span class="nav-icon">ℹ️</span>
+            <span>אודות</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/catalog" routerLinkActive="active" class="nav-link">
+            <span class="nav-icon">📦</span>
+            <span>קטלוג</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/cart" routerLinkActive="active" class="nav-link">
+            <span class="nav-icon">🛒</span>
+            <span>עגלה</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <!-- User Menu - Left Side -->
+      <div class="user-menu">
+        <!-- Before Login -->
+        <div class="auth-buttons" *ngIf="!isLoggedIn">
+  <button class="auth-btn register-btn" routerLink="/registration">
+  <span class="btn-icon">📝</span>
+  <span>הרשמה</span>
+</button>
+
+<button class="auth-btn login-btn" routerLink="/login">
+  <span class="btn-icon">🔐</span>
+  <span>התחברות</span>
+</button>
+
+        </div>
+        
+        <!-- After Login -->
+        <div class="logged-in-menu" *ngIf="isLoggedIn">
+          <button class="profile-button" routerLink="/profile">
+            <span class="profile-icon">👤</span>
+            <span class="profile-name">{{ userName }}</span>
+          </button>
+          <button class="logout-btn" (click)="onLogout()">
+            <span class="btn-icon">🚪</span>
+            <span>התנתקות</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+<!-- Spacer for fixed navbar -->
+<div class="navbar-spacer"></div>

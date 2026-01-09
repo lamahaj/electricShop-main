@@ -1,0 +1,227 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Smart TV",
+      "price": 3500,
+      "image": "/assets/smarttv.jpg",
+      "remainingStock": 20,
+      "stock": 100,
+      "brand": "Samsung",
+      "categoryId": 2,
+      "description": "טלוויזיה חכמה 55 אינץ' עם רזולוציה 4K Ultra HD, טכנולוגיית QLED לצבעים מדהימים, ומערכת הפעלה Tizen חכמה עם גישה לכל אפליקציות הסטרימינג הפופולריות.",
+      "category": "טלוויזיות",
+      "specifications": {
+        "גודל מסך": "55 אינץ'",
+        "רזולוציה": "4K UHD (3840x2160)",
+        "טכנולוגיה": "QLED",
+        "קצב רענון": "120Hz",
+        "חיבורים": "HDMI x4, USB x2, Wi-Fi",
+        "מערכת הפעלה": "Tizen",
+        "HDR": "כן (HDR10+)",
+        "משקל": "18.5 ק\"ג"
+      }
+    },
+    {
+      "id": 2,
+      "name": "iPhone 15",
+      "price": 4200,
+      "image": "/assets/iphone15.jpg",
+      "remainingStock": 0,
+      "stock": 40,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "סמארטפון מתקדם עם שבב A16 Bionic חזק במיוחד, מערכת מצלמות כפולה 48MP, מסך Super Retina XDR, ותמיכה ב-5G. עיצוב פרימיום מאלומיניום וזכוכית.",
+      "category": "סמארטפונים",
+      "specifications": {
+        "מעבד": "Apple A16 Bionic",
+        "זיכרון RAM": "6GB",
+        "נפח אחסון": "128GB",
+        "מסך": "6.1 אינץ' Super Retina XDR",
+        "מצלמה ראשית": "48MP + 12MP",
+        "מצלמה קדמית": "12MP",
+        "סוללה": "עד 20 שעות וידאו",
+        "מערכת הפעלה": "iOS 17",
+        "עמידות": "IP68",
+        "משקל": "171 גרם"
+      }
+    },
+    {
+      "id": 3,
+      "name": "iPhone 16",
+      "price": 4800,
+      "image": "/assets/iphone16.jpg",
+      "remainingStock": 0,
+      "stock": 95,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "דגם 2024 המתקדם ביותר! שבב A17 Pro מהיר פי 2, מצלמה 48MP משודרגת עם זום אופטי x5, כפתור Action חדש, ומסך ProMotion 120Hz.",
+      "category": "סמארטפונים",
+      "specifications": {
+        "מעבד": "Apple A17 Pro",
+        "זיכרון RAM": "8GB",
+        "נפח אחסון": "256GB",
+        "מסך": "6.1 אינץ' ProMotion 120Hz",
+        "מצלמה": "48MP טריפל עדשה",
+        "סוללה": "עד 25 שעות",
+        "חיבור": "USB-C",
+        "צבעים זמינים": "שחור, כחול, טבעי"
+      }
+    },
+    {
+      "id": 4,
+      "name": "iPhone 17 Pro Max",
+      "price": 4200,
+      "image": "/assets/iphone17.jpg",
+      "remainingStock": 90,
+      "stock": 200,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "הדגם החדש והמתקדם ביותר של Apple! שבב A18 Pro עם AI מתקדם, מסך 6.7 אינץ' ProMotion, מצלמה פרו עם זום פריסקופי x10, ועיצוב טיטניום קל במיוחד.",
+      "category": "סמארטפונים",
+      "specifications": {
+        "מעבד": "Apple A18 Pro",
+        "זיכרון RAM": "12GB",
+        "נפח אחסון": "512GB / 1TB",
+        "מסך": "6.7 אינץ' ProMotion LTPO",
+        "מצלמה": "48MP פרו (טריפל)",
+        "זום": "אופטי x10",
+        "סוללה": "עד 30 שעות",
+        "חומר": "טיטניום Grade 5"
+      }
+    },
+    {
+      "id": 5,
+      "name": "iPhone 14",
+      "price": 3800,
+      "image": "/assets/iphone14.jpg",
+      "remainingStock": 40,
+      "stock": 150,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "מודל קלאסי ואמין עם שבב A15 Bionic, מערכת מצלמות כפולה, Photonic Engine לצילומים מושלמים, וסוללה לכל היום.",
+      "category": "סמארטפונים",
+      "specifications": {
+        "מעבד": "Apple A15 Bionic",
+        "זיכרון RAM": "6GB",
+        "נפח אחסון": "128GB",
+        "מסך": "6.1 אינץ' Super Retina",
+        "מצלמה": "12MP כפולה",
+        "סוללה": "עד 20 שעות",
+        "חיבור": "Lightning"
+      }
+    },
+    {
+      "id": 6,
+      "name": "MacBook Pro",
+      "price": 8900,
+      "image": "/assets/macbook.jpg",
+      "remainingStock": 10,
+      "stock": 50,
+      "brand": "Apple",
+      "categoryId": 2,
+      "description": "מחשב נייד מקצועי עם שבב Apple M3 Pro, 16GB זיכרון מאוחד, דיסק SSD 512GB, מסך Liquid Retina XDR 14 אינץ', ועד 18 שעות סוללה.",
+      "category": "מחשבים ניידים",
+      "specifications": {
+        "מעבד": "Apple M3 Pro (12 ליבות)",
+        "זיכרון RAM": "16GB Unified Memory",
+        "דיסק קשיח": "512GB SSD",
+        "מסך": "14 אינץ' Liquid Retina XDR",
+        "רזולוציה": "3024x1964",
+        "GPU": "18 ליבות",
+        "יציאות": "Thunderbolt 4 x3, HDMI",
+        "סוללה": "עד 18 שעות",
+        "משקל": "1.55 ק\"ג"
+      }
+    },
+    {
+      "id": 7,
+      "name": "iPad Air",
+      "price": 2999,
+      "image": "/assets/ipad.jpg",
+      "remainingStock": 5,
+      "stock": 80,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "טאבלט קל ועוצמתי עם שבב M1, מסך Liquid Retina 10.9 אינץ', תמיכה ב-Apple Pencil ו-Magic Keyboard, מושלם לעבודה וליצירה.",
+      "category": "טאבלטים",
+      "specifications": {
+        "מעבד": "Apple M1",
+        "זיכרון RAM": "8GB",
+        "נפח אחסון": "64GB / 256GB",
+        "מסך": "10.9 אינץ' Liquid Retina",
+        "מצלמה אחורית": "12MP",
+        "מצלמה קדמית": "12MP Ultra Wide",
+        "חיבור": "USB-C",
+        "תמיכה": "Apple Pencil (דור 2)",
+        "משקל": "461 גרם"
+      }
+    },
+    {
+      "id": 8,
+      "name": "AirPods Pro",
+      "price": 899,
+      "image": "/assets/airpods.jpg",
+      "remainingStock": 100,
+      "stock": 300,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "אוזניות אלחוטיות עם ביטול רעשים אקטיבי, שבב H2 חדש, עד 6 שעות האזנה, ומצב שקיפות מותאם אישית.",
+      "category": "אוזניות",
+      "specifications": {
+        "שבב": "Apple H2",
+        "ביטול רעשים": "כן (ANC)",
+        "מצב שקיפות": "כן (Adaptive)",
+        "סוללה": "עד 6 שעות (30 עם נרתיק)",
+        "חיבור": "Bluetooth 5.3",
+        "עמידות": "IPX4",
+        "טעינה": "USB-C / MagSafe",
+        "משקל": "5.3 גרם (אוזניה)"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Apple Watch",
+      "price": 1999,
+      "image": "/assets/applewatch.jpg",
+      "remainingStock": 30,
+      "stock": 120,
+      "brand": "Apple",
+      "categoryId": 1,
+      "description": "שעון חכם עם מסך Retina תמיד דולק, מעקב כושר ובריאות מתקדם, GPS, עמידות במים, וסוללה ל-18 שעות.",
+      "category": "שעונים חכמים",
+      "specifications": {
+        "מסך": "Retina LTPO OLED",
+        "גודל": "41mm / 45mm",
+        "מעבד": "S9 SiP",
+        "חיישנים": "קצב לב, חמצן בדם, EKG",
+        "GPS": "כן",
+        "עמידות במים": "50 מטר",
+        "סוללה": "עד 18 שעות",
+        "חיבור": "Bluetooth 5.3, Wi-Fi"
+      }
+    },
+    {
+      "id": 10,
+      "name": "PlayStation 5",
+      "price": 2800,
+      "image": "/assets/ps5.jpg",
+      "remainingStock": 70,
+      "stock": 100,
+      "brand": "Sony",
+      "categoryId": 2,
+      "description": "קונסולת משחקים דור הבא עם גרפיקה 4K/8K, SSD במהירות פלאים, בקר DualSense עם משוב המטי, ותמיכה ב-Ray Tracing.",
+      "category": "קונסולות משחק",
+      "specifications": {
+        "מעבד": "AMD Zen 2 (8 ליבות)",
+        "GPU": "AMD RDNA 2 (10.3 TFLOPS)",
+        "זיכרון RAM": "16GB GDDR6",
+        "דיסק": "825GB SSD מהיר",
+        "רזולוציה": "עד 8K",
+        "קצב פריימים": "עד 120fps",
+        "Ray Tracing": "כן",
+        "יציאות": "HDMI 2.1, USB-C"
+      }
+    }
+  ]
+}

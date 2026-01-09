@@ -1,0 +1,27 @@
+.card {
+  position: sticky;
+  top: 20px;
+}
+
+.list-group-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: right;
+  border-right: 4px solid transparent;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  border-right-color: #0d6efd;
+}
+
+.list-group-item.active {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  border-right-color: #0a58ca;
+  font-weight: bold;
+}
+
+.list-group-item.active:hover {
+  background-color: #0b5ed7;
+}

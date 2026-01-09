@@ -1,0 +1,399 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Hero Section -->
+<section class="hero-section-register">
+  <div class="hero-content">
+    <h1 class="hero-title">הצטרפו למשפחת LaGal Store</h1>
+    <p class="hero-subtitle">צרו חשבון והתחילו לקנות בקלות ובמהירות</p>
+  </div>
+</section>
+
+<div class="container py-5">
+  
+  <!-- כותרת -->
+  <div class="text-center mb-5" *ngIf="!currentUser">
+    <h2 class="section-title">ניהול חשבון</h2>
+    <p class="section-subtitle">הרשמו או התחברו כדי להמשיך</p>
+  </div>
+
+  <!-- טפסי הרשמה והתחברות -->
+  <div class="row justify-content-center g-4" *ngIf="!currentUser">
+    
+    <!-- טופס הרשמה -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card auth-card shadow-lg border-0 h-100">
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <div class="auth-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <h3 class="card-title fw-bold">יצירת חשבון חדש</h3>
+            <p class="text-muted">הצטרפו אלינו היום</p>
+          </div>
+          
+          <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+            
+            <!-- שורה 1: שם משתמש + שם מלא -->
+            <div class="row">
+              <!-- שם משתמש -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  <i class="fas fa-user ms-2"></i>שם משתמש
+                </label>
+                <input 
+                  formControlName="username" 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="לפחות 3 תווים"
+                  [class.is-invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                <div class="invalid-feedback" *ngIf="registerForm.get('username')?.errors?.['required']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>שדה חובה
+                </div>
+                <div class="invalid-feedback" *ngIf="registerForm.get('username')?.errors?.['minlength']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>לפחות 3 תווים
+                </div>
+              </div>
+
+              <!-- שם מלא -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  <i class="fas fa-id-card ms-2"></i>שם מלא
+                </label>
+                <input 
+                  formControlName="fullName" 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="השם המלא שלך"
+                  [class.is-invalid]="fullNameControl?.invalid && fullNameControl?.touched">
+                <div class="invalid-feedback" *ngIf="fullNameControl?.errors?.['required']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>שדה חובה
+                </div>
+                <div class="invalid-feedback" *ngIf="fullNameControl?.errors?.['minlength']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>לפחות 2 תווים
+                </div>
+              </div>
+            </div>
+
+            <!-- אימייל -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-envelope ms-2"></i>כתובת אימייל
+              </label>
+              <input 
+                formControlName="email" 
+                type="email" 
+                class="form-control" 
+                placeholder="example@email.com"
+                [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              <div class="invalid-feedback" *ngIf="registerForm.get('email')?.errors?.['required']">
+                <i class="fas fa-exclamation-circle ms-1"></i>אימייל הוא שדה חובה
+              </div>
+              <div class="invalid-feedback" *ngIf="registerForm.get('email')?.errors?.['email']">
+                <i class="fas fa-exclamation-circle ms-1"></i>נא להזין כתובת אימייל תקינה
+              </div>
+            </div>
+
+            <!-- שורה 2: תאריך לידה + מין -->
+            <div class="row">
+              <!-- תאריך לידה -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  <i class="fas fa-calendar-alt ms-2"></i>תאריך לידה
+                </label>
+                <input 
+                  formControlName="birthDate" 
+                  type="date" 
+                  class="form-control"
+                  [max]="getTodayDate()"
+                  [class.is-invalid]="birthDateControl?.invalid && birthDateControl?.touched">
+                <div class="invalid-feedback" *ngIf="birthDateControl?.errors?.['required']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>שדה חובה
+                </div>
+                <div class="invalid-feedback" *ngIf="birthDateControl?.errors?.['tooYoung']">
+                  <i class="fas fa-exclamation-circle ms-1"></i>חייב להיות לפחות בן 13
+                </div>
+              </div>
+
+              <!-- מין -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  <i class="fas fa-venus-mars ms-2"></i>מין
+                </label>
+                <div class="btn-group w-100" role="group">
+                  <input 
+                    type="radio" 
+                    class="btn-check" 
+                    formControlName="gender" 
+                    value="male" 
+                    id="male" 
+                    autocomplete="off">
+                  <label class="btn btn-outline-primary" for="male">
+                    <i class="fas fa-mars ms-2"></i>זכר
+                  </label>
+
+                  <input 
+                    type="radio" 
+                    class="btn-check" 
+                    formControlName="gender" 
+                    value="female" 
+                    id="female" 
+                    autocomplete="off">
+                  <label class="btn btn-outline-primary" for="female">
+                    <i class="fas fa-venus ms-2"></i>נקבה
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- תמונת פרופיל -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-image ms-2"></i>תמונת פרופיל <small class="text-muted">(אופציונלי)</small>
+              </label>
+              
+              <!-- תצוגה מקדימה -->
+              <div *ngIf="previewImage" class="text-center mb-3">
+                <img [src]="previewImage" alt="Preview" class="img-thumbnail" style="max-width: 120px; max-height: 120px; object-fit: cover;">
+                <br>
+                <button type="button" class="btn btn-sm btn-danger mt-2" (click)="removeImage()">
+                  <i class="fas fa-trash ms-1"></i>הסר תמונה
+                </button>
+              </div>
+
+              <!-- כפתור בחירת תמונה -->
+              <div *ngIf="!previewImage">
+                <input 
+                  type="file" 
+                  class="form-control form-control-sm" 
+                  accept="image/*"
+                  (change)="onImageSelected($event)"
+                  id="imageInput">
+                <small class="form-text text-muted d-block mt-1">
+                  <i class="fas fa-info-circle ms-1"></i>
+                  מקסימום 5MB. JPG, PNG, GIF
+                </small>
+
+                <!-- תמונת ברירת מחדל -->
+                <div class="mt-2 text-center">
+                  <small class="text-muted d-block mb-1">תמונת ברירת מחדל:</small>
+                  <img 
+                    [src]="genderControl?.value === 'male' ? 'https://ui-avatars.com/api/?name=Male&background=0D8ABC&color=fff&size=100' : 'https://ui-avatars.com/api/?name=Female&background=f368e0&color=fff&size=100'" 
+                    alt="Default" 
+                    class="img-thumbnail"
+                    style="max-width: 80px;">
+                </div>
+              </div>
+            </div>
+
+            <!-- סיסמה -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-lock ms-2"></i>סיסמה
+              </label>
+              <div class="input-group">
+                <input 
+                  formControlName="password" 
+                  [type]="showPassword ? 'text' : 'password'" 
+                  class="form-control" 
+                  placeholder="סיסמה חזקה"
+                  [class.is-invalid]="passwordControl?.invalid && passwordControl?.touched">
+                <button 
+                  class="btn btn-outline-secondary" 
+                  type="button" 
+                  (click)="togglePasswordVisibility()">
+                  <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </button>
+              </div>
+              
+              <!-- אינדיקטורים לחוזק הסיסמה -->
+              <div class="password-requirements mt-2" *ngIf="passwordControl?.touched">
+                <small [class.text-success]="hasMinLength" [class.text-danger]="!hasMinLength">
+                  <i [class]="hasMinLength ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
+                  8+ תווים
+                </small>
+                <small [class.text-success]="hasUpperCase" [class.text-danger]="!hasUpperCase" class="ms-2">
+                  <i [class]="hasUpperCase ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
+                  A-Z
+                </small>
+                <small [class.text-success]="hasLowerCase" [class.text-danger]="!hasLowerCase" class="ms-2">
+                  <i [class]="hasLowerCase ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
+                  a-z
+                </small>
+                <small [class.text-success]="hasNumeric" [class.text-danger]="!hasNumeric" class="ms-2">
+                  <i [class]="hasNumeric ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
+                  0-9
+                </small>
+              </div>
+            </div>
+
+            <!-- אימות סיסמה -->
+            <div class="mb-4">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-lock ms-2"></i>אימות סיסמה
+              </label>
+              <div class="input-group">
+                <input 
+                  formControlName="confirmPassword" 
+                  [type]="showConfirmPassword ? 'text' : 'password'" 
+                  class="form-control" 
+                  placeholder="הזן סיסמה שוב"
+                  [class.is-invalid]="(confirmPasswordControl?.invalid && confirmPasswordControl?.touched) || (!passwordsMatch && confirmPasswordControl?.touched)">
+                <button 
+                  class="btn btn-outline-secondary" 
+                  type="button" 
+                  (click)="toggleConfirmPasswordVisibility()">
+                  <i [class]="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </button>
+              </div>
+              <small class="text-danger d-block mt-2" *ngIf="!passwordsMatch && confirmPasswordControl?.touched">
+                <i class="fas fa-times-circle ms-1"></i>
+                הסיסמאות אינן תואמות
+              </small>
+              <small class="text-success d-block mt-2" *ngIf="passwordsMatch && confirmPasswordControl?.value">
+                <i class="fas fa-check-circle ms-1"></i>
+                הסיסמאות תואמות
+              </small>
+            </div>
+
+            <button 
+              [disabled]="registerForm.invalid" 
+              type="submit" 
+              class="btn btn-register w-100 py-3 fw-bold">
+              <i class="fas fa-user-check ms-2"></i>הרשמה
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- טופס התחברות -->
+    <div class="col-lg-5 col-md-12">
+      <div class="card auth-card shadow-lg border-0 h-100">
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <div class="auth-icon login-icon">
+              <i class="fas fa-sign-in-alt"></i>
+            </div>
+            <h3 class="card-title fw-bold">התחברות</h3>
+            <p class="text-muted">ברוכים השבים</p>
+          </div>
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-user ms-2"></i>שם משתמש
+              </label>
+              <input 
+                formControlName="username" 
+                type="text" 
+                class="form-control form-control-lg" 
+                placeholder="הזינו שם משתמש"
+                [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              <div class="invalid-feedback">
+                <i class="fas fa-exclamation-circle ms-1"></i>שם משתמש הוא שדה חובה
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold">
+                <i class="fas fa-lock ms-2"></i>סיסמה
+              </label>
+              <input 
+                formControlName="password" 
+                type="password" 
+                class="form-control form-control-lg" 
+                placeholder="הזינו סיסמה"
+                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <div class="invalid-feedback">
+                <i class="fas fa-exclamation-circle ms-1"></i>סיסמה היא שדה חובה
+              </div>
+            </div>
+
+            <button 
+              [disabled]="loginForm.invalid" 
+              type="submit" 
+              class="btn btn-login w-100 py-3 fw-bold">
+              <i class="fas fa-sign-in-alt ms-2"></i>התחברות
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- אזור משתמש מחובר -->
+  <div class="row" *ngIf="currentUser">
+    <div class="col-12">
+      <div class="card welcome-card shadow-lg border-0">
+        <div class="card-header bg-gradient d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+          <div class="text-center text-md-start mb-3 mb-md-0">
+            <h2 class="mb-1 text-white">
+              <i class="fas fa-user-circle ms-2"></i>
+              שלום, <span class="fw-bold">{{currentUser.fullName || currentUser.username}}</span>!
+            </h2>
+            <p class="mb-0 text-white-50">{{currentUser.email}}</p>
+          </div>
+          <button class="btn btn-logout px-4 py-2" (click)="logout()">
+            <i class="fas fa-sign-out-alt ms-2"></i>התנתקות
+          </button>
+        </div>
+
+        <div class="card-body p-4">
+          <h4 class="mb-4">
+            <i class="fas fa-users ms-2"></i>רשימת משתמשים רשומים
+          </h4>
+          
+          <div class="table-responsive">
+            <table class="table table-hover align-middle users-table">
+              <thead class="table-header">
+                <tr>
+                  <th class="text-center" style="width: 80px;">
+                    <i class="fas fa-hashtag ms-2"></i>מזהה
+                  </th>
+                  <th>
+                    <i class="fas fa-user ms-2"></i>שם משתמש
+                  </th>
+                  <th>
+                    <i class="fas fa-id-card ms-2"></i>שם מלא
+                  </th>
+                  <th>
+                    <i class="fas fa-envelope ms-2"></i>אימייל
+                  </th>
+                  <th class="text-center">
+                    <i class="fas fa-venus-mars ms-2"></i>מין
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of allUsers; let i = index" class="user-row">
+                  <td class="text-center">
+                    <span class="badge-custom">{{i + 1}}</span>
+                  </td>
+                  <td>
+                    <strong class="text-primary">
+                      <i class="fas fa-user-circle ms-2"></i>{{user.username}}
+                    </strong>
+                  </td>
+                  <td>{{user.fullName || '-'}}</td>
+                  <td class="text-muted">{{user.email}}</td>
+                  <td class="text-center">
+                    <i [class]="user.gender === 'male' ? 'fas fa-mars text-primary' : 'fas fa-venus text-danger'"></i>
+                    {{user.gender === 'male' ? 'זכר' : 'נקבה'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="allUsers.length === 0" class="text-center py-5">
+            <i class="fas fa-users-slash fa-3x text-muted mb-3"></i>
+            <p class="text-muted">אין משתמשים רשומים במערכת</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
