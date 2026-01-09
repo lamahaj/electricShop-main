@@ -1,24 +1,34 @@
 {
   "users": [
-{
-      "id": 1,
+    {
+      "id": "1",
       "username": "gal",
       "email": "admin@gal.com",
       "password": "Gal123456",
       "fullName": "גל כהן",
       "birthDate": "1995-05-15",
       "gender": "male",
-      "profileImage": "/assets/gal-avatar.jpg"
+      "profileImage": "/assets/gal.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "lama",
       "email": "admin@lama.com",
       "password": "Lama123456",
       "fullName": "למא חאג'",
       "birthDate": "1998-08-22",
       "gender": "female",
-      "profileImage": "/assets/lama-avatar.jpg"
+      "profileImage": "/assets/lama.jpg"
+    },
+    {
+      "id": 3,
+      "username": "yasmine",
+      "email": "yasmine@gmail.com",
+      "password": "Yasmine123456",
+      "fullName": "yasmine mach",
+      "birthDate": "2013-01-08",
+      "gender": "female",
+      "profileImage": ""
     }
   ]
 }
