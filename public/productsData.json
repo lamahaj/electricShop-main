@@ -8,7 +8,7 @@
       "remainingStock": 20,
       "stock": 100,
       "brand": "Samsung",
-      "categoryId": 2,
+      "categoryId": 1,
       "description": "טלוויזיה חכמה 55 אינץ' עם רזולוציה 4K Ultra HD, טכנולוגיית QLED לצבעים מדהימים, ומערכת הפעלה Tizen חכמה עם גישה לכל אפליקציות הסטרימינג הפופולריות.",
       "category": "טלוויזיות",
       "specifications": {
@@ -30,7 +30,7 @@
       "remainingStock": 0,
       "stock": 40,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "סמארטפון מתקדם עם שבב A16 Bionic חזק במיוחד, מערכת מצלמות כפולה 48MP, מסך Super Retina XDR, ותמיכה ב-5G. עיצוב פרימיום מאלומיניום וזכוכית.",
       "category": "סמארטפונים",
       "specifications": {
@@ -54,7 +54,7 @@
       "remainingStock": 0,
       "stock": 95,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "דגם 2024 המתקדם ביותר! שבב A17 Pro מהיר פי 2, מצלמה 48MP משודרגת עם זום אופטי x5, כפתור Action חדש, ומסך ProMotion 120Hz.",
       "category": "סמארטפונים",
       "specifications": {
@@ -76,7 +76,7 @@
       "remainingStock": 90,
       "stock": 200,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "הדגם החדש והמתקדם ביותר של Apple! שבב A18 Pro עם AI מתקדם, מסך 6.7 אינץ' ProMotion, מצלמה פרו עם זום פריסקופי x10, ועיצוב טיטניום קל במיוחד.",
       "category": "סמארטפונים",
       "specifications": {
@@ -98,7 +98,7 @@
       "remainingStock": 40,
       "stock": 150,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "מודל קלאסי ואמין עם שבב A15 Bionic, מערכת מצלמות כפולה, Photonic Engine לצילומים מושלמים, וסוללה לכל היום.",
       "category": "סמארטפונים",
       "specifications": {
@@ -119,7 +119,7 @@
       "remainingStock": 10,
       "stock": 50,
       "brand": "Apple",
-      "categoryId": 2,
+      "categoryId": 3,
       "description": "מחשב נייד מקצועי עם שבב Apple M3 Pro, 16GB זיכרון מאוחד, דיסק SSD 512GB, מסך Liquid Retina XDR 14 אינץ', ועד 18 שעות סוללה.",
       "category": "מחשבים ניידים",
       "specifications": {
@@ -142,7 +142,7 @@
       "remainingStock": 5,
       "stock": 80,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "טאבלט קל ועוצמתי עם שבב M1, מסך Liquid Retina 10.9 אינץ', תמיכה ב-Apple Pencil ו-Magic Keyboard, מושלם לעבודה וליצירה.",
       "category": "טאבלטים",
       "specifications": {
@@ -165,7 +165,7 @@
       "remainingStock": 100,
       "stock": 300,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 4,
       "description": "אוזניות אלחוטיות עם ביטול רעשים אקטיבי, שבב H2 חדש, עד 6 שעות האזנה, ומצב שקיפות מותאם אישית.",
       "category": "אוזניות",
       "specifications": {
@@ -187,7 +187,7 @@
       "remainingStock": 30,
       "stock": 120,
       "brand": "Apple",
-      "categoryId": 1,
+      "categoryId": 2,
       "description": "שעון חכם עם מסך Retina תמיד דולק, מעקב כושר ובריאות מתקדם, GPS, עמידות במים, וסוללה ל-18 שעות.",
       "category": "שעונים חכמים",
       "specifications": {
@@ -209,7 +209,7 @@
       "remainingStock": 70,
       "stock": 100,
       "brand": "Sony",
-      "categoryId": 2,
+      "categoryId": 6,
       "description": "קונסולת משחקים דור הבא עם גרפיקה 4K/8K, SSD במהירות פלאים, בקר DualSense עם משוב המטי, ותמיכה ב-Ray Tracing.",
       "category": "קונסולות משחק",
       "specifications": {
@@ -222,6 +222,495 @@
         "Ray Tracing": "כן",
         "יציאות": "HDMI 2.1, USB-C"
       }
-    }
+    },
+    {
+  "id": 11,
+  "name": "Samsung QLED 65\"",
+  "price": 5200,
+  "image": "/assets/tv-samsung-qled-65.jpg",
+  "remainingStock": 15,
+  "stock": 60,
+  "brand": "Samsung",
+  "categoryId": 1,
+  "description": "טלוויזיית QLED בגודל 65 אינץ' עם צבעים חדים במיוחד, תמיכה ב-HDR10+ ומערכת הפעלה Tizen.",
+  "category": "טלוויזיות",
+  "specifications": {
+    "גודל מסך": "65 אינץ'",
+    "רזולוציה": "4K UHD",
+    "טכנולוגיה": "QLED",
+    "קצב רענון": "120Hz",
+    "HDR": "HDR10+",
+    "מערכת הפעלה": "Tizen"
+  }
+},
+{
+  "id": 12,
+  "name": "LG OLED 55\"",
+  "price": 6100,
+  "image": "/assets/tv-lg-oled-55.jpg",
+  "remainingStock": 8,
+  "stock": 40,
+  "brand": "LG",
+  "categoryId": 1,
+  "description": "טלוויזיית OLED מתקדמת עם שחור מוחלט, תמיכה ב-Dolby Vision ו-webOS.",
+  "category": "טלוויזיות",
+  "specifications": {
+    "גודל מסך": "55 אינץ'",
+    "רזולוציה": "4K UHD",
+    "טכנולוגיה": "OLED",
+    "קצב רענון": "120Hz",
+    "HDR": "Dolby Vision",
+    "מערכת הפעלה": "webOS"
+  }
+},
+{
+  "id": 13,
+  "name": "Sony Bravia 75\"",
+  "price": 8900,
+  "image": "/assets/tv-sony-bravia-75.jpg",
+  "remainingStock": 5,
+  "stock": 25,
+  "brand": "Sony",
+  "categoryId": 1,
+  "description": "טלוויזיית פרימיום 75 אינץ' עם מעבד תמונה XR, תמיכה ב-Dolby Atmos ו-Android TV.",
+  "category": "טלוויזיות",
+  "specifications": {
+    "גודל מסך": "75 אינץ'",
+    "רזולוציה": "4K UHD",
+    "טכנולוגיה": "LED",
+    "קצב רענון": "120Hz",
+    "HDR": "Dolby Vision",
+    "מערכת הפעלה": "Android TV"
+  }
+},
+{
+  "id": 14,
+  "name": "TCL Mini-LED 65\"",
+  "price": 4300,
+  "image": "/assets/tv-tcl-mini-led-65.jpg",
+  "remainingStock": 20,
+  "stock": 70,
+  "brand": "TCL",
+  "categoryId": 1,
+  "description": "טלוויזיית Mini-LED משתלמת עם בהירות גבוהה, תמיכה ב-HDR ו-Google TV.",
+  "category": "טלוויזיות",
+  "specifications": {
+    "גודל מסך": "65 אינץ'",
+    "רזולוציה": "4K UHD",
+    "טכנולוגיה": "Mini-LED",
+    "קצב רענון": "144Hz",
+    "HDR": "HDR10",
+    "מערכת הפעלה": "Google TV"
+  }
+},
+{
+  "id": 15,
+  "name": "Hisense ULED 58\"",
+  "price": 3200,
+  "image": "/assets/tv-hisense-uled-58.jpg",
+  "remainingStock": 30,
+  "stock": 100,
+  "brand": "Hisense",
+  "categoryId": 1,
+  "description": "טלוויזיית ULED איכותית במחיר משתלם, עם Dolby Vision ו-VIDAA OS.",
+  "category": "טלוויזיות",
+  "specifications": {
+    "גודל מסך": "58 אינץ'",
+    "רזולוציה": "4K UHD",
+    "טכנולוגיה": "ULED",
+    "קצב רענון": "60Hz",
+    "HDR": "Dolby Vision",
+    "מערכת הפעלה": "VIDAA"
+  }
+},
+{
+  "id": 16,
+  "name": "תנור אפייה בילד-אין Bosch",
+  "price": 4200,
+  "image": "/assets/oven-bosch.jpg",
+  "remainingStock": 12,
+  "stock": 40,
+  "brand": "Bosch",
+  "categoryId": 5,
+  "description": "תנור אפייה בילד-אין איכותי עם טורבו אקטיבי, ניקוי פירוליטי ותוכניות אפייה מתקדמות.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "נפח": "71 ליטר",
+    "טכנולוגיה": "טורבו אקטיבי",
+    "ניקוי": "פירוליטי",
+    "מספר תוכניות": "13",
+    "דירוג אנרגטי": "A+"
+  }
+},
+{
+  "id": 17,
+  "name": "מכונת כביסה Samsung 9KG",
+  "price": 3600,
+  "image": "/assets/washing-machine-samsung.jpg",
+  "remainingStock": 18,
+  "stock": 60,
+  "brand": "Samsung",
+  "categoryId": 5,
+  "description": "מכונת כביסה חכמה עם מנוע אינוורטר, תוכניות כביסה חסכוניות ושליטה דרך אפליקציה.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "קיבולת": "9 ק\"ג",
+    "מהירות סחיטה": "1400 סל\"ד",
+    "מנוע": "Digital Inverter",
+    "שליטה חכמה": "כן",
+    "דירוג אנרגטי": "A"
+  }
+},
+{
+  "id": 18,
+  "name": "מיקרוגל LG 30L",
+  "price": 850,
+  "image": "/assets/microwave-lg.jpg",
+  "remainingStock": 40,
+  "stock": 120,
+  "brand": "LG",
+  "categoryId": 5,
+  "description": "מיקרוגל גדול עם טכנולוגיית Inverter לחימום אחיד ומהיר.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "נפח": "30 ליטר",
+    "הספק": "1000W",
+    "טכנולוגיה": "Inverter",
+    "תוכניות אוטומטיות": "כן"
+  }
+},
+{
+  "id": 19,
+  "name": "קומקום חשמלי Philips",
+  "price": 220,
+  "image": "/assets/kettle-philips.jpg",
+  "remainingStock": 90,
+  "stock": 200,
+  "brand": "Philips",
+  "categoryId": 5,
+  "description": "קומקום חשמלי מהיר עם גוף חימום נסתר ומנגנון בטיחות כפול.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "נפח": "1.7 ליטר",
+    "הספק": "2200W",
+    "גוף חימום": "נסתר",
+    "כיבוי אוטומטי": "כן"
+  }
+},
+{
+  "id": 20,
+  "name": "טוסטר קופץ Moulinex",
+  "price": 280,
+  "image": "/assets/toaster-moulinex.jpg",
+  "remainingStock": 55,
+  "stock": 150,
+  "brand": "Moulinex",
+  "categoryId": 5,
+  "description": "טוסטר קופץ עם 7 דרגות השחמה ותא רחב ללחמים עבים.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "מספר פרוסות": "2",
+    "דרגות השחמה": "7",
+    "תא רחב": "כן",
+    "מגש פירורים": "כן"
+  }
+},
+{
+  "id": 21,
+  "name": "שואב אבק Dyson V11",
+  "price": 2900,
+  "image": "/assets/dyson-v11.jpg",
+  "remainingStock": 10,
+  "stock": 35,
+  "brand": "Dyson",
+  "categoryId": 5,
+  "description": "שואב אבק אלחוטי עוצמתי עם סינון HEPA וסוללה ארוכת טווח.",
+  "category": "מוצרי חשמל לבית",
+  "specifications": {
+    "סוג": "אלחוטי",
+    "זמן עבודה": "עד 60 דקות",
+    "סינון": "HEPA",
+    "משקל": "3 ק\"ג"
+  }
+},
+{
+  "id": 22,
+  "name": "Dell XPS 13",
+  "price": 6200,
+  "image": "/assets/laptop-dell-xps13.jpg",
+  "remainingStock": 14,
+  "stock": 50,
+  "brand": "Dell",
+  "categoryId": 3,
+  "description": "מחשב נייד פרימיום קל ודק עם מסך InfinityEdge וביצועים גבוהים לעבודה יומיומית.",
+  "category": "מחשבים ונייחים",
+  "specifications": {
+    "מעבד": "Intel Core i7",
+    "זיכרון RAM": "16GB",
+    "אחסון": "512GB SSD",
+    "מסך": "13.4 אינץ' FHD+",
+    "משקל": "1.2 ק\"ג"
+  }
+},
+{
+  "id": 23,
+  "name": "HP Pavilion 15",
+  "price": 4800,
+  "image": "/assets/laptop-hp-pavilion.jpg",
+  "remainingStock": 22,
+  "stock": 70,
+  "brand": "HP",
+  "categoryId": 3,
+  "description": "מחשב נייד אמין לבית וללימודים עם ביצועים טובים ועיצוב אלגנטי.",
+  "category": "מחשבים ונייחים",
+  "specifications": {
+    "מעבד": "Intel Core i5",
+    "זיכרון RAM": "16GB",
+    "אחסון": "512GB SSD",
+    "מסך": "15.6 אינץ' FHD",
+    "כרטיס גרפי": "Intel Iris Xe"
+  }
+},
+{
+  "id": 24,
+  "name": "Lenovo Legion 5",
+  "price": 7200,
+  "image": "/assets/laptop-lenovo-legion5.jpg",
+  "remainingStock": 9,
+  "stock": 30,
+  "brand": "Lenovo",
+  "categoryId": 3,
+  "description": "מחשב נייד חזק לגיימינג ויצירה עם כרטיס גרפי ייעודי וקירור מתקדם.",
+  "category": "מחשבים ונייחים",
+  "specifications": {
+    "מעבד": "AMD Ryzen 7",
+    "זיכרון RAM": "16GB",
+    "אחסון": "1TB SSD",
+    "כרטיס גרפי": "NVIDIA RTX 3060",
+    "מסך": "15.6 אינץ' 165Hz"
+  }
+},
+{
+  "id": 25,
+  "name": "Gaming PC RTX 4070",
+  "price": 9800,
+  "image": "/assets/desktop-gaming-rtx4070.jpg",
+  "remainingStock": 6,
+  "stock": 20,
+  "brand": "Custom Build",
+  "categoryId": 3,
+  "description": "מחשב נייח חזק במיוחד לגיימינג כבד ועריכת וידאו ברמה גבוהה.",
+  "category": "מחשבים ונייחים",
+  "specifications": {
+    "מעבד": "Intel Core i7 13700K",
+    "זיכרון RAM": "32GB",
+    "אחסון": "1TB NVMe SSD",
+    "כרטיס גרפי": "NVIDIA RTX 4070",
+    "מערכת הפעלה": "Windows 11"
+  }
+},
+{
+  "id": 26,
+  "name": "Office PC i5",
+  "price": 3400,
+  "image": "/assets/desktop-office-i5.jpg",
+  "remainingStock": 25,
+  "stock": 80,
+  "brand": "Lenovo",
+  "categoryId": 3,
+  "description": "מחשב נייח שקט ויעיל למשרד, גלישה ועבודה משרדית.",
+  "category": "מחשבים ונייחים",
+  "specifications": {
+    "מעבד": "Intel Core i5",
+    "זיכרון RAM": "16GB",
+    "אחסון": "512GB SSD",
+    "כרטיס גרפי": "Intel UHD Graphics",
+    "מערכת הפעלה": "Windows 11"
+  }
+},
+{
+  "id": 27,
+  "name": "Sony WH-1000XM5",
+  "price": 1499,
+  "image": "/assets/headphones-sony-xm5.jpg",
+  "remainingStock": 35,
+  "stock": 120,
+  "brand": "Sony",
+  "categoryId": 4,
+  "description": "אוזניות אלחוטיות עם ביטול רעשים מהטובים בעולם, איכות שמע גבוהה וסוללה ארוכת טווח.",
+  "category": "אודיו ווידאו",
+  "specifications": {
+    "סוג": "אוזניות אלחוטיות",
+    "ביטול רעשים": "כן (ANC)",
+    "זמן סוללה": "עד 30 שעות",
+    "חיבור": "Bluetooth 5.2"
+  }
+},
+{
+  "id": 28,
+  "name": "JBL Flip 6",
+  "price": 520,
+  "image": "/assets/speaker-jbl-flip6.jpg",
+  "remainingStock": 60,
+  "stock": 200,
+  "brand": "JBL",
+  "categoryId": 4,
+  "description": "רמקול בלוטות' נייד עם סאונד עוצמתי, עמידות למים ועיצוב קומפקטי.",
+  "category": "אודיו ווידאו",
+  "specifications": {
+    "סוג": "רמקול נייד",
+    "עמידות": "IP67",
+    "זמן סוללה": "עד 12 שעות",
+    "חיבור": "Bluetooth"
+  }
+},
+{
+  "id": 29,
+  "name": "Samsung Soundbar HW-Q800C",
+  "price": 2800,
+  "image": "/assets/soundbar-samsung-q800c.jpg",
+  "remainingStock": 14,
+  "stock": 50,
+  "brand": "Samsung",
+  "categoryId": 4,
+  "description": "סאונדבר מתקדם עם Dolby Atmos וסאב-וופר אלחוטי לחוויית קולנוע ביתית.",
+  "category": "אודיו ווידאו",
+  "specifications": {
+    "ערוצים": "5.1.2",
+    "טכנולוגיה": "Dolby Atmos",
+    "סאב וופר": "אלחוטי",
+    "חיבורים": "HDMI eARC, Bluetooth"
+  }
+},
+{
+  "id": 30,
+  "name": "Bose QuietComfort Ultra",
+  "price": 2190,
+  "image": "/assets/headphones-bose-qc-ultra.jpg",
+  "remainingStock": 22,
+  "stock": 70,
+  "brand": "Bose",
+  "categoryId": 4,
+  "description": "אוזניות פרימיום עם ביטול רעשים מהטובים בעולם, סאונד מאוזן ונוחות יוצאת דופן לשימוש ממושך.",
+  "category": "אודיו ווידאו",
+  "specifications": {
+    "סוג": "אוזניות קשת",
+    "ביטול רעשים": "כן (ANC)",
+    "זמן סוללה": "עד 24 שעות",
+    "חיבור": "Bluetooth 5.3"
+  }
+},
+{
+  "id": 31,
+  "name": "Yamaha RX-V6A Receiver",
+  "price": 3200,
+  "image": "/assets/receiver-yamaha-rxv6a.jpg",
+  "remainingStock": 10,
+  "stock": 35,
+  "brand": "Yamaha",
+  "categoryId": 4,
+  "description": "רסיבר קולנוע ביתי איכותי עם תמיכה ב-Dolby Atmos וצליל עוצמתי למערכת אודיו מקצועית.",
+  "category": "אודיו ווידאו",
+  "specifications": {
+    "ערוצים": "7.2",
+    "טכנולוגיה": "Dolby Atmos",
+    "חיבורים": "HDMI x7, Bluetooth, Wi-Fi",
+    "הספק": "100W לערוץ"
+  }
+},
+{
+  "id": 32,
+  "name": "Xbox Series X",
+  "price": 2900,
+  "image": "/assets/xbox-series-x.jpg",
+  "remainingStock": 45,
+  "stock": 120,
+  "brand": "Microsoft",
+  "categoryId": 6,
+  "description": "קונסולת הדגל של Xbox עם ביצועים חזקים במיוחד, תמיכה ב-4K ו-Game Pass.",
+  "category": "גיימינג",
+  "specifications": {
+    "מעבד": "AMD Zen 2",
+    "GPU": "12 TFLOPS",
+    "אחסון": "1TB SSD",
+    "רזולוציה": "עד 4K",
+    "קצב פריימים": "עד 120fps"
+  }
+},
+{
+  "id": 33,
+  "name": "Nintendo Switch OLED",
+  "price": 1900,
+  "image": "/assets/nintendo-switch-oled.jpg",
+  "remainingStock": 60,
+  "stock": 150,
+  "brand": "Nintendo",
+  "categoryId": 6,
+  "description": "קונסולה היברידית עם מסך OLED איכותי, משחקים אקסקלוסיביים וחוויית משחק ייחודית.",
+  "category": "גיימינג",
+  "specifications": {
+    "מסך": "7 אינץ' OLED",
+    "מצבים": "נייד / שולחני / טלוויזיה",
+    "אחסון": "64GB",
+    "סוללה": "עד 9 שעות"
+  }
+},
+{
+  "id": 34,
+  "name": "Logitech G923 Driving Simulator",
+  "price": 2400,
+  "image": "/assets/logitech-g923.jpg",
+  "remainingStock": 18,
+  "stock": 50,
+  "brand": "Logitech",
+  "categoryId": 6,
+  "description": "הגה וסימולטור נהיגה מתקדם עם Force Feedback מציאותי, תואם PS5, PS4 ו-PC.",
+  "category": "גיימינג",
+  "specifications": {
+    "סוג": "הגה וסימולטור נהיגה",
+    "טכנולוגיה": "TrueForce",
+    "תאימות": "PS5 / PS4 / PC",
+    "דוושות": "גז, בלם, קלאץ'"
+  }
+},
+{
+  "id": 35,
+  "name": "DualSense Helldivers Edition",
+  "price": 420,
+  "image": "/assets/dualsense-helldivers.jpg",
+  "remainingStock": 70,
+  "stock": 200,
+  "brand": "Sony",
+  "categoryId": 6,
+  "description": "שלט DualSense מיוחד בהשראת Helldivers עם טריגרים אדפטיביים ורטט מתקדם.",
+  "category": "גיימינג",
+  "specifications": {
+    "סוג": "שלט אלחוטי",
+    "טכנולוגיה": "Adaptive Triggers, Haptic Feedback",
+    "תאימות": "PlayStation 5",
+    "חיבור": "Bluetooth / USB-C"
+  }
+},
+{
+  "id": 36,
+  "name": "PlayStation VR2",
+  "price": 2300,
+  "image": "/assets/ps-vr2.jpg",
+  "remainingStock": 20,
+  "stock": 60,
+  "brand": "Sony",
+  "categoryId": 6,
+  "description": "קסדת מציאות מדומה מתקדמת ל-PS5 עם רזולוציה גבוהה, מעקב עיניים וחוויית VR דור חדש.",
+  "category": "גיימינג",
+  "specifications": {
+    "רזולוציה": "4K HDR",
+    "מעקב עיניים": "כן",
+    "שדה ראייה": "110°",
+    "תאימות": "PlayStation 5"
+  }
+}
+
+
+    
   ]
 }

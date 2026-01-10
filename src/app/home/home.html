@@ -110,40 +110,61 @@
   </section>
 
   <section class="categories-section">
-    <div class="container">
-      <h2 class="section-title">קטגוריות מובילות</h2>
-      <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon">📱</div>
-          <h3>סמארטפונים וטאבלטים</h3>
-          <p>המבחר הגדול ביותר</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">💻</div>
-          <h3>מחשבים ונייחים</h3>
-          <p>לכל צורך ותקציב</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">📺</div>
-          <h3>טלוויזיות</h3>
-          <p>טכנולוגיות חדישות</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🎧</div>
-          <h3>אודיו ווידאו</h3>
-          <p>איכות שמע מעולה</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🏠</div>
-          <h3>מוצרי חשמל לבית</h3>
-          <p>חכם ונוח</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🎮</div>
-          <h3>גיימינג</h3>
-          <p>לגיימרים המתקדמים</p>
-        </div>
+  <div class="container">
+    <h2 class="section-title">קטגוריות מובילות</h2>
+
+    <div class="categories-grid">
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 2 }">
+        <div class="category-icon">📱</div>
+        <h3>סמארטפונים וטאבלטים</h3>
+        <p>המבחר הגדול ביותר</p>
       </div>
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 3}">
+        <div class="category-icon">💻</div>
+        <h3>מחשבים ונייחים</h3>
+        <p>לכל צורך ותקציב</p>
+      </div>
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 1}">
+        <div class="category-icon">📺</div>
+        <h3>טלוויזיות</h3>
+        <p>טכנולוגיות חדישות</p>
+      </div>
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 4 }">
+        <div class="category-icon">🎧</div>
+        <h3>אודיו ווידאו</h3>
+        <p>איכות שמע מעולה</p>
+      </div>
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 5 }">
+        <div class="category-icon">🏠</div>
+        <h3>מוצרי חשמל לבית</h3>
+        <p>חכם ונוח</p>
+      </div>
+
+      <div class="category-card"
+           [routerLink]="['/catalog']"
+           [queryParams]="{ category: 6 }">
+        <div class="category-icon">🎮</div>
+        <h3>גיימינג</h3>
+        <p>לגיימרים המתקדמים</p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 </div>
