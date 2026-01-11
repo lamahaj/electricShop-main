@@ -32,21 +32,12 @@
     },
     {
       "id": 4,
-<<<<<<< HEAD
-      "username": "gal",
-      "email": "fenxx0@gmail.com",
-      "password": "123456Gal",
-      "fullName": "gal",
-      "birthDate": "2001-02-06",
-      "gender": "male",
-=======
       "username": "soso",
       "email": "soso@gmail.com",
       "password": "Soso123456",
       "fullName": "soso ",
       "birthDate": "2012-10-18",
       "gender": "female",
->>>>>>> 6a40e4526fa76f3ee7f31e5998f686d554386b99
       "profileImage": ""
     }
   ]
