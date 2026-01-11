@@ -1,52 +1,78 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: false,
   templateUrl: './navbar.html',
- styleUrls: ['./navbar.css'],
+  styleUrls: ['./navbar.css'],
 })
-export class Navbar {
+export class Navbar implements OnInit {
   isMenuOpen = false;
+
+  // מצב משתמש
   isLoggedIn = false;
-  userName = 'למא';
+  userName = '';
+  userImage = '';
+  isProfileMenuOpen = false;
+
   cartItemsCount = 0;
 
   constructor(private router: Router) {}
 
-// התחברות / הרשמה
-onAuthClick(type: 'login' | 'register'): void {
-  this.isMenuOpen = false;
+  ngOnInit(): void {
+    this.loadUserFromSession();
+    
 
-  if (type === 'login') {
-    this.router.navigate(['/login']);
-  } else {
-    this.router.navigate(['/register']);
+    // עדכון מיידי אחרי login/logout
+    window.addEventListener('session-user-changed', () => {
+      this.loadUserFromSession();
+    });
   }
 
-  console.log(type === 'login' ? 'פתיחת התחברות' : 'פתיחת הרשמה');
-}
+  private loadUserFromSession(): void {
+    const raw = sessionStorage.getItem('currentUser');
 
-// התנתקות
-onLogout(): void {
-  // סגירת תפריט
-  this.isMenuOpen = false;
+    if (raw) {
+      const user = JSON.parse(raw);
+      this.isLoggedIn = true;
+      this.userName = user.fullName || user.username || '';
+      this.userImage = user.profileImage || '';
+    } else {
+      this.isLoggedIn = false;
+      this.userName = '';
+      this.userImage = '';
+      this.isProfileMenuOpen = false;
+    }
+  }
 
-  // ניקוי נתוני משתמש
-  this.isLoggedIn = false;
-  this.userName = '';
+  defaultAvatar(): string {
+    const raw = sessionStorage.getItem('currentUser');
+    const user = raw ? JSON.parse(raw) : null;
+    const gender = user?.gender;
 
-  // ניקוי localStorage
-  localStorage.removeItem('user');
-  localStorage.removeItem('token');
+    return gender === 'female'
+      ? 'https://ui-avatars.com/api/?name=Female&background=f368e0&color=fff&size=100'
+      : 'https://ui-avatars.com/api/?name=Male&background=0D8ABC&color=fff&size=100';
+  }
 
-  // ניווט לדף הבית
-  this.router.navigate(['/']);
+  toggleProfileMenu(): void {
+    this.isProfileMenuOpen = !this.isProfileMenuOpen;
+  }
 
-  console.log('התנתקות בוצעה בהצלחה');
+  goUserDetails(): void {
+    this.isProfileMenuOpen = false;
+    this.router.navigateByUrl('/profile/user-details');
+  }
 
-}
+  // התנתקות לפי דרישה
+  onLogout(): void {
+    this.isMenuOpen = false;
+    this.isProfileMenuOpen = false;
 
+    sessionStorage.removeItem('currentUser');
+    window.dispatchEvent(new Event('session-user-changed'));
 
+    this.router.navigateByUrl('/profile/login');
+  }
 }

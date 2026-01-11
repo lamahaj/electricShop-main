@@ -237,6 +237,7 @@
 
 /* Logged In Menu - After Login */
 .logged-in-menu {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -245,27 +246,19 @@
 .profile-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  min-width: 120px;
-  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
   background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
   border: 2px solid #e2e8f0;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #4a5568;
   font-family: inherit;
   white-space: nowrap;
-}
-
-.profile-button.icon-only {
-  min-width: 45px;
-  width: 45px;
-  height: 45px;
-  padding: 0;
+  min-height: 48px;
 }
 
 .profile-button:hover {
@@ -276,13 +269,82 @@
   color: white;
 }
 
-.profile-icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+}
+
+.profile-button:hover .profile-avatar {
+  border-color: white;
 }
 
 .profile-name {
   font-family: inherit;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Profile Dropdown Menu */
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: right;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a5568;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.profile-menu-item:hover {
+  background: linear-gradient(135deg, #f6f8fb 0%, #edf2f7 100%);
+  color: #667eea;
+}
+
+.profile-menu-item .btn-icon {
+  font-size: 1.2rem;
+}
+
+.profile-menu-item:last-child:hover {
+  background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+  color: #e53e3e;
 }
 
 .logout-btn {
@@ -460,6 +522,12 @@
     justify-content: center;
     padding: 16px 24px;
     font-size: 1.1rem;
+  }
+
+  .profile-menu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
   }
 
   .mobile-toggle {

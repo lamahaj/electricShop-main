@@ -15,6 +15,9 @@ import { CommonModule } from '@angular/common';
 import { Catalog } from './catalog/catalog';
 import { Categories } from './categories/categories';
 import { Products } from './products/products';
+import { Profile } from './profile/profile';
+import { Login } from './profile/login/login';
+import { UserDetails } from './profile/user-details/user-details';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { Products } from './products/products';
     Catalog,
     Categories,
     Products,
+    Profile,
+    Login,
+    UserDetails,
   ],
   imports: [
     BrowserModule,

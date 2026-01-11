@@ -1,5 +1,6 @@
 <nav class="navbar">
   <div class="navbar-container">
+
     <!-- Logo and Name - Right Side -->
     <div class="navbar-logo">
       <a routerLink="/">
@@ -11,73 +12,95 @@
     <!-- Search Bar - Center -->
     <div class="navbar-search">
       <span class="search-icon">🔍</span>
-      <input 
-        type="text" 
-        class="search-input" 
+      <input
+        type="text"
+        class="search-input"
         placeholder="חפשו מוצרים, מותגים או קטגוריות..."
       />
     </div>
 
     <!-- Navigation Menu - Center & Left -->
     <div class="navbar-menu" [class.active]="isMenuOpen">
+
       <!-- Navigation Links - Center -->
       <ul class="nav-links">
         <li class="nav-item">
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+          >
             <span class="nav-icon">🏠</span>
             <span>בית</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a routerLink="/aboutus" routerLinkActive="active" class="nav-link">
             <span class="nav-icon">ℹ️</span>
             <span>אודות</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a routerLink="/catalog" routerLinkActive="active" class="nav-link">
             <span class="nav-icon">📦</span>
             <span>קטלוג</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a routerLink="/cart" routerLinkActive="active" class="nav-link">
             <span class="nav-icon">🛒</span>
             <span>עגלה</span>
           </a>
         </li>
-
       </ul>
 
       <!-- User Menu - Left Side -->
       <div class="user-menu">
+
         <!-- Before Login -->
         <div class="auth-buttons" *ngIf="!isLoggedIn">
-  <button class="auth-btn register-btn" routerLink="/registration">
-  <span class="btn-icon">📝</span>
-  <span>הרשמה</span>
-</button>
-
-<button class="auth-btn login-btn" routerLink="/login">
-  <span class="btn-icon">🔐</span>
-  <span>התחברות</span>
-</button>
-
-        </div>
-        
-        <!-- After Login -->
-        <div class="logged-in-menu" *ngIf="isLoggedIn">
-          <button class="profile-button" routerLink="/profile">
-            <span class="profile-icon">👤</span>
-            <span class="profile-name">{{ userName }}</span>
+          <button class="auth-btn register-btn" routerLink="/profile/register" type="button">
+            <span class="btn-icon">📝</span>
+            <span>הרשמה</span>
           </button>
-          <button class="logout-btn" (click)="onLogout()">
-            <span class="btn-icon">🚪</span>
-            <span>התנתקות</span>
+
+          <button class="auth-btn login-btn" routerLink="/profile" type="button">
+            <span class="btn-icon">🔐</span>
+            <span>התחברות</span>
           </button>
         </div>
+
+        <!-- After Login (Dropdown) -->
+        <div class="logged-in-menu" *ngIf="isLoggedIn" style="position: relative;">
+
+<button class="profile-button" type="button" (click)="toggleProfileMenu()">
+  <img class="profile-avatar" [src]="userImage ? userImage : defaultAvatar()" alt="avatar">
+  <span class="profile-name">{{ userName }}</span>
+  <span class="btn-icon">▾</span>
+</button>
+
+          <div class="profile-menu" *ngIf="isProfileMenuOpen">
+            <button class="profile-menu-item" type="button" (click)="goUserDetails()">
+              <span class="btn-icon">📄</span>
+              <span>user-details</span>
+            </button>
+
+            <button class="profile-menu-item" type="button" (click)="onLogout()">
+              <span class="btn-icon">🚪</span>
+              <span>logout</span>
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </div>
+  </div>
+</nav>
 
 <!-- Spacer for fixed navbar -->
 <div class="navbar-spacer"></div>

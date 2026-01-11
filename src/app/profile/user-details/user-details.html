@@ -1,0 +1,82 @@
+<div class="user-details-container" dir="rtl" *ngIf="currentUser">
+  <div class="user-card">
+    
+    <!-- Header with Background -->
+    <div class="card-header">
+      <div class="header-gradient"></div>
+      <div class="header-content">
+        <h2 class="card-title">פרטי המשתמש</h2>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-image-wrapper">
+        <img 
+          [src]="currentUser.profileImage || 'https://ui-avatars.com/api/?name=' + currentUser.fullName + '&background=667eea&color=fff&size=200'" 
+          alt="תמונת פרופיל"
+          class="profile-image"
+        />
+        <div class="image-badge">
+          <span>✓</span>
+        </div>
+      </div>
+      
+      <div class="profile-info">
+        <h3 class="user-name">{{ currentUser.fullName }}</h3>
+        <p class="user-subtitle">חבר פעיל</p>
+      </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="details-grid">
+      
+      <div class="detail-item">
+        <div class="detail-icon">📧</div>
+        <div class="detail-content">
+          <span class="detail-label">כתובת אימייל</span>
+          <span class="detail-value">{{ currentUser.email }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <div class="detail-icon">👤</div>
+        <div class="detail-content">
+          <span class="detail-label">שם מלא</span>
+          <span class="detail-value">{{ currentUser.fullName }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <div class="detail-icon">🎂</div>
+        <div class="detail-content">
+          <span class="detail-label">תאריך לידה</span>
+          <span class="detail-value">{{ currentUser.birthDate }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <div class="detail-icon">{{ currentUser.gender === 'male' ? '👨' : '👩' }}</div>
+        <div class="detail-content">
+          <span class="detail-label">מגדר</span>
+          <span class="detail-value">{{ currentUser.gender === 'male' ? 'זכר' : 'נקבה' }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Buttons (אופציונלי - תוכל להסיר אם לא צריך) -->
+    <div class="card-actions">
+      <button class="action-btn btn-primary" type="button">
+        <span class="btn-icon">✏️</span>
+        <span>עריכת פרופיל</span>
+      </button>
+      
+      <button class="action-btn btn-secondary" routerLink="/" type="button">
+        <span class="btn-icon">🏠</span>
+        <span>חזרה לדף הבית</span>
+      </button>
+    </div>
+
+  </div>
+</div>

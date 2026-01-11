@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { User } from '../modules/user';
 import { UserService } from '../services/user-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +19,7 @@ export class Registration implements OnInit {
   selectedImage: string | null = null;  // ← הוספנו
   previewImage: string | null = null;   // ← הוספנו
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -197,6 +198,7 @@ export class Registration implements OnInit {
             this.registerForm.patchValue({ gender: 'male' }); // reset ל-default
             this.previewImage = null;
             alert('ההרשמה בוצעה בהצלחה! כעת תוכל להתחבר');
+              this.router.navigateByUrl('/profile/login');
           },
           error: (err) => {
             if (err.message.includes('כבר קיים')) {

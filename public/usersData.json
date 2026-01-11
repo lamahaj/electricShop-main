@@ -21,13 +21,23 @@
       "profileImage": "/assets/lama.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "yasmine",
       "email": "yasmine@gmail.com",
       "password": "Yasmine123456",
       "fullName": "yasmine mach",
       "birthDate": "2013-01-08",
       "gender": "female",
+      "profileImage": ""
+    },
+    {
+      "id": 4,
+      "username": "gal",
+      "email": "fenxx0@gmail.com",
+      "password": "123456Gal",
+      "fullName": "gal",
+      "birthDate": "2001-02-06",
+      "gender": "male",
       "profileImage": ""
     }
   ]
