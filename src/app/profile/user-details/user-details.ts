@@ -20,4 +20,5 @@ export class UserDetails implements OnInit {
       this.router.navigateByUrl('/profile/login');
     }
   }
+  
 }

@@ -152,7 +152,7 @@
                 <i class="fas fa-image ms-2"></i>תמונת פרופיל <small class="text-muted">(אופציונלי)</small>
               </label>
               
-              <!-- תצוגה מקדימה -->
+              <!-- תצוגה מקדימה של תמונה שנבחרה -->
               <div *ngIf="previewImage" class="text-center mb-3">
                 <img [src]="previewImage" alt="Preview" class="img-thumbnail" style="max-width: 120px; max-height: 120px; object-fit: cover;">
                 <br>
@@ -178,10 +178,10 @@
                 <div class="mt-2 text-center">
                   <small class="text-muted d-block mb-1">תמונת ברירת מחדל:</small>
                   <img 
-                    [src]="genderControl?.value === 'male' ? 'https://ui-avatars.com/api/?name=Male&background=0D8ABC&color=fff&size=100' : 'https://ui-avatars.com/api/?name=Female&background=f368e0&color=fff&size=100'" 
-                    alt="Default" 
+                    [src]="getDefaultImagePreview()" 
+                    alt="Default Avatar" 
                     class="img-thumbnail"
-                    style="max-width: 80px;">
+                    style="max-width: 80px; max-height: 80px; object-fit: cover;">
                 </div>
               </div>
             </div>
@@ -350,6 +350,9 @@
               <thead class="table-header">
                 <tr>
                   <th class="text-center" style="width: 80px;">
+                    <i class="fas fa-image ms-2"></i>תמונה
+                  </th>
+                  <th class="text-center" style="width: 80px;">
                     <i class="fas fa-hashtag ms-2"></i>מזהה
                   </th>
                   <th>
@@ -364,10 +367,21 @@
                   <th class="text-center">
                     <i class="fas fa-venus-mars ms-2"></i>מין
                   </th>
+                  <th class="text-center">
+                    <i class="fas fa-birthday-cake ms-2"></i>גיל
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let user of allUsers; let i = index" class="user-row">
+                  <td class="text-center">
+                    <img 
+                      [src]="user.defaultImage" 
+                      [alt]="user.username" 
+                      class="rounded-circle"
+                      style="width: 40px; height: 40px; object-fit: cover;"
+                      (error)="$event.target.src='https://ui-avatars.com/api/?name=' + user.username + '&background=random'">
+                  </td>
                   <td class="text-center">
                     <span class="badge-custom">{{i + 1}}</span>
                   </td>
@@ -381,6 +395,9 @@
                   <td class="text-center">
                     <i [class]="user.gender === 'male' ? 'fas fa-mars text-primary' : 'fas fa-venus text-danger'"></i>
                     {{user.gender === 'male' ? 'זכר' : 'נקבה'}}
+                  </td>
+                  <td class="text-center">
+                    {{user.age || '-'}}
                   </td>
                 </tr>
               </tbody>

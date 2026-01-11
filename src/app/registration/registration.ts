@@ -16,8 +16,8 @@ export class Registration implements OnInit {
   currentUser: User | null = null;
   showPassword = false;
   showConfirmPassword = false;
-  selectedImage: string | null = null;  // ← הוספנו
-  previewImage: string | null = null;   // ← הוספנו
+  selectedImage: string | null = null;
+  previewImage: string | null = null;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
@@ -27,10 +27,10 @@ export class Registration implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.strongPasswordValidator]],
       confirmPassword: ['', Validators.required],
-      fullName: ['', [Validators.required, Validators.minLength(2)]],  // ← הוספנו
-      birthDate: ['', [Validators.required, this.ageValidator]],        // ← הוספנו
-      gender: ['male', Validators.required],                             // ← הוספנו
-      profileImage: ['']                                                 // ← הוספנו
+      fullName: ['', [Validators.required, Validators.minLength(2)]],
+      birthDate: ['', [Validators.required, this.ageValidator]],
+      gender: ['male', Validators.required],
+      profileImage: ['']
     }, {
       validators: this.passwordMatchValidator
     });
@@ -39,6 +39,9 @@ export class Registration implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    // טעינת משתמש נוכחי אם קיים
+    this.currentUser = this.userService.getCurrentUser();
   }
 
   // Validator לסיסמה חזקה
@@ -138,6 +141,14 @@ export class Registration implements OnInit {
     return !this.registerForm.errors?.['passwordsMismatch'];
   }
 
+  // ✅ פונקציה חדשה - תמונת ברירת מחדל לפי מין
+  getDefaultImagePreview(): string {
+    const gender = this.genderControl?.value || 'male';
+    return gender === 'male' 
+      ? 'assets/avatar-male.jpg' 
+      : 'assets/female-avatar.webp';
+  }
+
   // פונקציות תצוגת סיסמה
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -178,6 +189,11 @@ export class Registration implements OnInit {
   removeImage(): void {
     this.previewImage = null;
     this.registerForm.patchValue({ profileImage: '' });
+    // איפוס input file
+    const fileInput = document.getElementById('imageInput') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
   }
 
   get allUsers(): User[] {
@@ -198,7 +214,7 @@ export class Registration implements OnInit {
             this.registerForm.patchValue({ gender: 'male' }); // reset ל-default
             this.previewImage = null;
             alert('ההרשמה בוצעה בהצלחה! כעת תוכל להתחבר');
-              this.router.navigateByUrl('/profile/login');
+            this.router.navigateByUrl('/profile/login');
           },
           error: (err) => {
             if (err.message.includes('כבר קיים')) {
@@ -236,11 +252,12 @@ export class Registration implements OnInit {
     this.loginForm.reset();
     alert('התנתקת בהצלחה');
   }
+
   getTodayDate(): string {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 }

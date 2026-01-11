@@ -15,8 +15,8 @@ export class User {
   // Getter לתמונת ברירת מחדל לפי מין
   get defaultImage(): string {
     return this.profileImage || (this.gender === 'male' 
-      ? '/assets/avatar-male.png' 
-      : '/assets/female-avatar.png');
+      ? '/assets/avatar-male.jpg' 
+      : '/assets/female-avatar.webp');
   }
 
   // Getter לגיל מחושב

@@ -31,13 +31,23 @@
       "profileImage": ""
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "soso",
       "email": "soso@gmail.com",
       "password": "Soso123456",
       "fullName": "soso ",
       "birthDate": "2012-10-18",
       "gender": "female",
+      "profileImage": ""
+    },
+    {
+      "id": 5,
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "Omar123456",
+      "fullName": "omarr",
+      "birthDate": "2007-11-12",
+      "gender": "male",
       "profileImage": ""
     }
   ]
