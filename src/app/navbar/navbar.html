@@ -50,12 +50,18 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a routerLink="/cart" routerLinkActive="active" class="nav-link">
-            <span class="nav-icon">🛒</span>
-            <span>עגלה</span>
-          </a>
-        </li>
+  <li class="nav-item">
+  <a class="nav-link" routerLink="/cart" routerLinkActive="active">
+    <i class="bi bi-cart"></i> עגלת קניות
+    <span class="badge bg-danger" *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
+  </a>
+</li>
+         <li class="nav-item" *ngIf="isAdmin">
+    <a routerLink="/manage-products" routerLinkActive="active" class="nav-link">
+      <span class="nav-icon">🛠️</span>
+      <span>ניהול מוצרים</span>
+    </a>
+  </li>
       </ul>
 
       <!-- User Menu - Left Side -->
@@ -97,9 +103,11 @@
 
         </div>
 
+
       </div>
     </div>
   </div>
+  
 </nav>
 
 <!-- Spacer for fixed navbar -->

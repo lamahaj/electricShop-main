@@ -8,7 +8,8 @@
       "fullName": "גל כהן",
       "birthDate": "1995-05-15",
       "gender": "male",
-      "profileImage": "/assets/gal.jpg"
+      "profileImage": "/assets/gal.jpg",
+      "isAdmin" : true
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "fullName": "למא חאג'",
       "birthDate": "1998-08-22",
       "gender": "female",
-      "profileImage": "/assets/lama.jpg"
+      "profileImage": "/assets/lama.jpg",
+      "isAdmin" : true
     },
     {
       "id": "3",

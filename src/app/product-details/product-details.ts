@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../modules/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../service';
+import { CartService } from '../services/cart'; // ← הוסף import
 
 @Component({
   selector: 'app-product-details',
@@ -19,58 +20,61 @@ export class ProductDetails implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService // ← הוסף inject
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.productId = +params['id'];
+      this.productId = Number(params['id']);
       console.log('🔍 Looking for product ID:', this.productId);
-      
-      // תמיד נחכה שהנתונים ייטענו (גם אם כבר התחילו להיטען)
       this.loadProduct();
     });
   }
 
   private loadProduct(): void {
-    // נבדוק אם המוצרים כבר נטענו
-    const allProducts = this.productService.getAllProducts();
-    
-    if (allProducts.length > 0) {
-      // המוצרים כבר קיימים
-      console.log('✅ Products already loaded, total:', allProducts.length);
-      this.product = this.productService.getProductById(this.productId!);
+    if (!this.productId) {
+      this.notFound = true;
       this.isLoading = false;
-      
-      if (!this.product) {
-        console.log('❌ Product not found with ID:', this.productId);
-        this.notFound = true;
-      } else {
-        console.log('✅ Product found:', this.product.name);
-      }
-    } else {
-      // צריך לטעון את המוצרים
-      console.log('⏳ Loading products from server...');
-      this.productService.fetchProducts().subscribe({
-        next: () => {
-          console.log('✅ Products loaded successfully');
-          this.product = this.productService.getProductById(this.productId!);
-          this.isLoading = false;
-          
-          if (!this.product) {
-            console.log('❌ Product not found after loading');
-            this.notFound = true;
-          } else {
-            console.log('✅ Product found:', this.product.name);
-          }
-        },
-        error: (err) => {
-          console.error('💥 Error loading products:', err);
-          this.isLoading = false;
-          this.notFound = true;
-        }
-      });
+      return;
     }
+
+    this.isLoading = true;
+    this.notFound = false;
+
+    this.productService.getProductById(this.productId).subscribe({
+      next: (p: Product) => {
+        this.product = p;
+        this.isLoading = false;
+        console.log('✅ Product found:', this.product?.name);
+      },
+      error: (err) => {
+        console.error('💥 Product not found / error:', err);
+        this.product = undefined;
+        this.isLoading = false;
+        this.notFound = true;
+      }
+    });
+  }
+
+  // ✨ פונקציה חדשה להוספה לעגלה
+  addToCart(): void {
+    if (!this.product) {
+      return;
+    }
+
+    if (!this.product.inStock) {
+      alert('המוצר אזל מהמלאי');
+      return;
+    }
+
+    this.cartService.addToCart(this.product);
+    
+    // הצגת הודעת הצלחה
+    alert(`✅ ${this.product.name} התוסף לעגלה בהצלחה!`);
+    
+    // אופציונלי: ניווט לעגלה
+    // this.router.navigate(['/cart']);
   }
 
   goBackHome(): void {

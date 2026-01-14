@@ -1,0 +1,29 @@
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-group button {
+  min-width: 40px;
+}
+
+.img-fluid {
+  transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .fs-5 {
+    font-size: 1rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}

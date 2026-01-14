@@ -11,10 +11,12 @@ import { Products } from './products/products';
 import { Profile } from './profile/profile';
 import { Login } from './profile/login/login';
 import { UserDetails } from './profile/user-details/user-details';
+import { Cart } from './cart/cart';
 
 const routes: Routes = [
   { path: '', component: Home },  
-  { path: 'aboutus', component: Aboutus }, 
+  { path: 'aboutus', component: Aboutus },
+  { path: 'cart', component: Cart }, 
   { path: 'registration', component: Registration }, 
   { path: 'catalog', component: Catalog }, 
   { path: 'categories', component: Categories }, 

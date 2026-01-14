@@ -196,9 +196,9 @@ export class Registration implements OnInit {
     }
   }
 
-  get allUsers(): User[] {
-    return this.userService.getUsers();
-  }
+get allUsers(): User[] {
+  return this.userService.getUsers();
+}
 
   onRegister() {
     if (this.registerForm.valid) {
@@ -232,19 +232,26 @@ export class Registration implements OnInit {
     }
   }
 
-  onLogin() {
-    const { username, password } = this.loginForm.value;
-    console.log("onLogin");
+onLogin() {
+  const { username, password } = this.loginForm.value;
+  console.log("onLogin");
 
-    const user = this.userService.login(username, password);
-    
-    if (user) {
-      this.currentUser = user;
-      alert('התחברת בהצלחה!');
-    } else {
-      alert('שם משתמש או סיסמה שגויים');
+  this.userService.login(username, password).subscribe({
+    next: (user) => {
+      if (user) {
+        this.currentUser = user;
+        alert('התחברת בהצלחה!');
+        this.router.navigateByUrl('/profile/user-details');
+      } else {
+        alert('שם משתמש/אימייל או סיסמה שגויים');
+      }
+    },
+    error: (err) => {
+      console.error('Login error:', err);
+      alert('שגיאה בהתחברות. נסה שוב.');
     }
-  }
+  });
+}
 
   logout() {
     this.userService.logout();

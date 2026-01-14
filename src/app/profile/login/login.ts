@@ -31,33 +31,34 @@ export class Login implements OnInit {
     this.router.navigateByUrl('/profile/register');
   }
 
-  onLogin(): void {
-    this.loginError = '';
+onLogin(): void {
+  this.loginError = '';
 
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      this.loginError = 'נא למלא שם משתמש וסיסמה';
-      return;
-    }
-
-   const { username, password } = this.loginForm.value;
-const user = this.userService.login(username, password);
-
-if (user) {
-sessionStorage.setItem('currentUser', JSON.stringify(user));
-window.dispatchEvent(new Event('session-user-changed'));
-} else {
-  this.loginError = 'שם משתמש או סיסמה שגויים';
-}
-    if (user) {
-      // דרישה: לשמור ב-session את המשתמש שהתחבר
-      sessionStorage.setItem('currentUser', JSON.stringify(user));
-
-      // דרישה: אחרי login מוצלח -> userDetails
-      this.router.navigateByUrl('/profile/user-details');
-    } else {
-      // דרישה: חיווי אם פרטים שגויים
-      this.loginError = 'שם משתמש או סיסמה שגויים';
-    }
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
+    this.loginError = 'נא למלא שם משתמש וסיסמה';
+    return;
   }
+
+  const { username, password } = this.loginForm.value;
+
+  this.userService.login(username, password).subscribe({
+    next: (user: User | null) => {
+      if (user) {
+        // המשתמש נשמר כבר בתוך ה-UserService (currentUser + auth)
+        // אנחנו רק מודיעים ל-navbar להתעדכן (כמו שעשית)
+        window.dispatchEvent(new Event('session-user-changed'));
+
+        // דרישה: אחרי login מוצלח -> userDetails
+        this.router.navigateByUrl('/profile/user-details');
+      } else {
+        this.loginError = 'שם משתמש או סיסמה שגויים';
+      }
+    },
+    error: (err) => {
+      console.error('Login error:', err);
+      this.loginError = 'שגיאה בהתחברות. נסה שוב.';
+    }
+  });
+}
 }

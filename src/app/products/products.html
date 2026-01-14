@@ -82,12 +82,12 @@
         </div>
         
         <!-- כפתורים -->
-        <div class="mt-auto">
-          <button class="btn btn-primary w-100 mb-2" 
-                  [disabled]="!product.inStock">
-            <i class="bi bi-cart-plus"></i>
-            {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
-          </button>
+<button class="btn btn-primary w-100 mb-2" 
+        [disabled]="!product.inStock"
+        (click)="addToCart(product)">
+  <i class="bi bi-cart-plus"></i>
+  {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
+</button>
           
           <button class="btn btn-outline-secondary w-100"
                   (click)="viewProductDetails(product.id)">
@@ -100,4 +100,3 @@
     </div>
   </div>
   
-</div>

@@ -18,6 +18,7 @@ import { Products } from './products/products';
 import { Profile } from './profile/profile';
 import { Login } from './profile/login/login';
 import { UserDetails } from './profile/user-details/user-details';
+import { Cart } from './cart/cart';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserDetails } from './profile/user-details/user-details';
     Profile,
     Login,
     UserDetails,
+    Cart,
   ],
   imports: [
     BrowserModule,

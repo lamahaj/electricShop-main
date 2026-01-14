@@ -1,79 +1,83 @@
 import { Injectable } from '@angular/core';
 import { User } from '../modules/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, switchMap, tap, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  getUsers(): User[] {
+    throw new Error('Method not implemented.');
+  }
 
-  private jsonUrl = 'http://localhost:3001/users'; 
-  private usersList: User[] = [];
-  
-  // BehaviorSubject למעקב אחר המשתמש המחובר
+  private jsonUrl = 'http://localhost:3001/users';
+
+  // מצב המשתמש המחובר
   private currentUserSubject = new BehaviorSubject<User | null>(this.getUserFromSession());
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.fetchUsers().subscribe();
+  constructor(private http: HttpClient) {}
+
+  // ✅ שליפה מהשרת (אין מערך מקומי)
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.jsonUrl);
   }
 
-  fetchUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.jsonUrl).pipe(
-      tap(data => this.usersList = data)
-    );
-  }
-
-  getUsers(): User[] {
-    return this.usersList;
-  }
-
-  // רישום משתמש חדש
+  // ✅ רישום משתמש חדש: בדיקה מול השרת ואז POST
   register(userData: Partial<User>): Observable<User> {
-    // בדיקה אם המשתמש כבר קיים
-    const existingUser = this.usersList.find(u => u.email === userData.email);
-    if (existingUser) {
-      throw new Error('משתמש עם מייל זה כבר קיים במערכת');
+    const email = (userData.email || '').trim().toLowerCase();
+
+    if (!email) {
+      throw new Error('אימייל הוא שדה חובה');
     }
 
-    // יצירת ID חדש
-    const newId = this.usersList.length > 0 
-      ? Math.max(...this.usersList.map(u => u.id || 0)) + 1 
-      : 1;
-    
-    const newUser = new User({ ...userData, id: newId });
-    
-    // הוספה למערך המקומי
-    this.usersList.push(newUser);
+    // json-server תומך סינון לפי שדות: /users?email=...
+    return this.http.get<User[]>(`${this.jsonUrl}?email=${encodeURIComponent(email)}`).pipe(
+      switchMap((existing: User[]) => {
+        if (existing.length > 0) {
+          throw new Error('משתמש עם מייל זה כבר קיים במערכת');
+        }
 
-    // שליחה לשרת
-    return this.http.post<User>(this.jsonUrl, newUser).pipe(
+        const newUser: User = new User({
+          ...userData,
+          email,
+          isAdmin: userData.isAdmin ?? false
+        });
+
+        return this.http.post<User>(this.jsonUrl, newUser);
+      }),
       tap(() => console.log('User registered successfully'))
     );
   }
 
-  // התחברות
-  login(email: string, password: string): User | undefined {
-    const user = this.usersList.find(u => 
-      u.email === email && u.password === password
+  // ✅ התחברות מול השרת (אין usersList)
+  login(email: string, password: string): Observable<User | null> {
+    const e = (email || '').trim().toLowerCase();
+    const p = (password || '').trim();
+
+    if (!e || !p) return of(null);
+
+    // json-server: /users?email=...&password=...
+    return this.http.get<User[]>(
+      `${this.jsonUrl}?email=${encodeURIComponent(e)}&password=${encodeURIComponent(p)}`
+    ).pipe(
+      map(users => (users.length ? new User(users[0]) : null)),
+      tap(user => {
+        if (user) {
+          this.saveUserToSession(user);
+          this.currentUserSubject.next(user);
+          console.log('Login successful:', user);
+        }
+      })
     );
-    
-    if (user) {
-      // שמירה ב-sessionStorage
-      this.saveUserToSession(user);
-      // עדכון ה-BehaviorSubject
-      this.currentUserSubject.next(user);
-      console.log('Login successful:', user);
-    }
-    
-    return user;
   }
 
-  // התנתקות
+  // ✅ התנתקות
   logout(): void {
     sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('auth');
     this.currentUserSubject.next(null);
     console.log('User logged out');
   }
@@ -83,27 +87,26 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  // החזרת משתמש לפי מייל
-  getUserByEmail(email: string): User | undefined {
-    return this.usersList.find(u => u.email === email);
-  }
-
-  // שמירה ב-session
+  // שמירה ב-session (כמו שיש לך)
   private saveUserToSession(user: User): void {
     sessionStorage.setItem('currentUser', JSON.stringify(user));
+
+    sessionStorage.setItem('auth', JSON.stringify({
+      email: user.email,
+      image: user.profileImage || '',
+      isAdmin: !!user.isAdmin
+    }));
   }
 
   // קריאה מ-session
   private getUserFromSession(): User | null {
     const userJson = sessionStorage.getItem('currentUser');
     if (userJson) {
-      const userData = JSON.parse(userJson);
-      return new User(userData);
+      return new User(JSON.parse(userJson));
     }
     return null;
   }
 
-  // בדיקה אם משתמש מחובר
   isLoggedIn(): boolean {
     return this.getCurrentUser() !== null;
   }

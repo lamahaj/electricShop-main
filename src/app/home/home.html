@@ -90,11 +90,12 @@
               
                
                 
-                <button 
-                  class="btn btn-primary btn-block w-100" 
-                  [disabled]="!product.inStock">
-                  {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
-                </button>
+<button 
+  class="btn btn-primary w-100 mb-2"
+  [disabled]="!product.inStock"
+  (click)="addToCart(product)">
+  {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
+</button>
                                 <button 
                   class="btn btn-primary btn-block w-100"
                   [routerLink]="['/product', product.id]"

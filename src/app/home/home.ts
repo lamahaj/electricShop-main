@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../modules/product';
 import { ProductService } from '../service';
+import { CartService } from '../services/cart';
 
 @Component({
   selector: 'app-home',
@@ -9,27 +10,43 @@ import { ProductService } from '../service';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
- 
+
   products: Product[] = [];
   popularProducts: Product[] = [];
   isLoading: boolean = true;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService ,private cartService: CartService) {}
 
   ngOnInit(): void {
-    // נחכה שהנתונים ייטענו מהשרת
-    this.productService.fetchProducts().subscribe({
-      next: (data) => {
-        console.log('Data loaded:', data);
-        this.products = this.productService.getAllProducts();
-        this.popularProducts = this.productService.getPopularProducts();
+    this.isLoading = true;
+
+    // 1) כל המוצרים
+    this.productService.getAllProducts().subscribe({
+      next: (products: Product[]) => {
+        this.products = products;
         this.isLoading = false;
-        console.log('Popular products:', this.popularProducts);
       },
       error: (err) => {
         console.error('Error loading products:', err);
         this.isLoading = false;
       }
     });
+
+    // 2) פופולריים (Top 5)
+    this.productService.getPopularProducts().subscribe({
+      next: (popular: Product[]) => {
+        this.popularProducts = popular;
+        console.log('Popular products:', this.popularProducts);
+      },
+      error: (err) => {
+        console.error('Error loading popular products:', err);
+      }
+    });
   }
+
+
+addToCart(product: Product): void {
+  this.cartService.addToCart(product); // או השם שיש לך בשירות
+  window.dispatchEvent(new Event('cart-updated')); // כדי שהNavbar יעדכן את הבאג׳
+}
 }

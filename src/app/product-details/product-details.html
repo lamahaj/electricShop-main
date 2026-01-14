@@ -1,4 +1,5 @@
 <!-- הודעת טעינה -->
+
 <div *ngIf="isLoading" class="loading-container text-center p-5">
   <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
     <span class="visually-hidden">טוען...</span>
@@ -102,13 +103,16 @@
 
       <!-- כפתורי פעולה -->
       <div class="action-buttons">
-        <button class="buy-btn" [disabled]="!product.inStock">
-          🛒 {{ product.inStock ? 'הוסף לעגלה' : 'אזל מהמלאי' }}
-        </button>
-        <button class="back-btn" (click)="goBackHome()">
-          <span class="arrow">←</span> חזרה לדף הבית
-        </button>
-      </div>
+  <button 
+    class="buy-btn" 
+    [disabled]="!product.inStock"
+    (click)="addToCart()">  <!-- ← הוספנו את ה-click event -->
+    🛒 {{ product.inStock ? 'הוסף לעגלה' : 'אזל מהמלאי' }}
+  </button>
+  <button class="back-btn" (click)="goBackHome()">
+    <span class="arrow">←</span> חזרה לדף הבית
+  </button>
+</div>
 
     </div>
   </div>

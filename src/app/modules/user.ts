@@ -6,7 +6,8 @@ export class User {
   fullName: string = '';           // ← הוספנו
   birthDate: string = '';           // ← הוספנו (פורמט: YYYY-MM-DD)
   gender: 'male' | 'female' = 'male';  // ← הוספנו
-  profileImage?: string;            // ← הוספנו (URL לתמונה)
+  profileImage?: string; 
+  isAdmin: boolean = false;           
 
   constructor(init?: Partial<User>) {
     Object.assign(this, init);
