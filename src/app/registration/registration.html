@@ -13,16 +13,16 @@
   
   <!-- כותרת -->
   <div class="text-center mb-5" *ngIf="!currentUser">
-    <h2 class="section-title">ניהול חשבון</h2>
-    <p class="section-subtitle">הרשמו או התחברו כדי להמשיך</p>
+    <h2 class="section-title">יצירת חשבון</h2>
+    <p class="section-subtitle">הרשמו כדי להמשיך</p>
   </div>
 
-  <!-- טפסי הרשמה והתחברות -->
-  <div class="row justify-content-center g-4" *ngIf="!currentUser">
+  <!-- טופס הרשמה בלבד -->
+  <div class="row justify-content-center" *ngIf="!currentUser">
     
     <!-- טופס הרשמה -->
-    <div class="col-lg-6 col-md-12">
-      <div class="card auth-card shadow-lg border-0 h-100">
+    <div class="col-lg-8 col-md-10">
+      <div class="card auth-card shadow-lg border-0">
         <div class="card-body p-4">
           <div class="text-center mb-4">
             <div class="auth-icon">
@@ -261,60 +261,6 @@
               type="submit" 
               class="btn btn-register w-100 py-3 fw-bold">
               <i class="fas fa-user-check ms-2"></i>הרשמה
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- טופס התחברות -->
-    <div class="col-lg-5 col-md-12">
-      <div class="card auth-card shadow-lg border-0 h-100">
-        <div class="card-body p-4">
-          <div class="text-center mb-4">
-            <div class="auth-icon login-icon">
-              <i class="fas fa-sign-in-alt"></i>
-            </div>
-            <h3 class="card-title fw-bold">התחברות</h3>
-            <p class="text-muted">ברוכים השבים</p>
-          </div>
-          
-          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <div class="mb-3">
-              <label class="form-label fw-semibold">
-                <i class="fas fa-user ms-2"></i>שם משתמש
-              </label>
-              <input 
-                formControlName="username" 
-                type="text" 
-                class="form-control form-control-lg" 
-                placeholder="הזינו שם משתמש"
-                [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-              <div class="invalid-feedback">
-                <i class="fas fa-exclamation-circle ms-1"></i>שם משתמש הוא שדה חובה
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-semibold">
-                <i class="fas fa-lock ms-2"></i>סיסמה
-              </label>
-              <input 
-                formControlName="password" 
-                type="password" 
-                class="form-control form-control-lg" 
-                placeholder="הזינו סיסמה"
-                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-              <div class="invalid-feedback">
-                <i class="fas fa-exclamation-circle ms-1"></i>סיסמה היא שדה חובה
-              </div>
-            </div>
-
-            <button 
-              [disabled]="loginForm.invalid" 
-              type="submit" 
-              class="btn btn-login w-100 py-3 fw-bold">
-              <i class="fas fa-sign-in-alt ms-2"></i>התחברות
             </button>
           </form>
         </div>

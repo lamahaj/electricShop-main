@@ -1,8 +1,7 @@
-// navbar.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart';
-
+import { UserService } from '../services/user-service'; // ← הוסף את זה
 
 @Component({
   selector: 'app-navbar',
@@ -12,38 +11,32 @@ import { CartService } from '../services/cart';
 })
 export class Navbar implements OnInit {
   isMenuOpen = false;
-
-  // מצב משתמש
   isLoggedIn = false;
   userName = '';
   userImage = '';
   isProfileMenuOpen = false;
   isAdmin = false;
-
-  // מצב עגלה ✅
   cartItemsCount = 0;
 
   constructor(
     private router: Router,
-    private cartService: CartService // ← הוספנו
+    private cartService: CartService,
+    private userService: UserService // ← הוסף את זה
   ) {}
 
   ngOnInit(): void {
     this.loadUserFromSession();
-    this.updateCartCount(); // ← הוספנו
+    this.updateCartCount();
 
-    // עדכון אחרי login/logout
     window.addEventListener('session-user-changed', () => {
       this.loadUserFromSession();
     });
 
-    // עדכון אחרי שינוי בעגלה ✅
     window.addEventListener('cart-updated', () => {
       this.updateCartCount();
     });
   }
 
-  // פונקציה חדשה לעדכון מספר פריטים בעגלה ✅
   private updateCartCount(): void {
     this.cartItemsCount = this.cartService.getCartItemsCount();
   }
@@ -88,15 +81,18 @@ export class Navbar implements OnInit {
     this.router.navigateByUrl('/profile/user-details');
   }
 
+  // ✅ תיקון - קריאה ל-UserService.logout()
   onLogout(): void {
     this.isMenuOpen = false;
     this.isProfileMenuOpen = false;
 
-    sessionStorage.removeItem('currentUser');
-    sessionStorage.removeItem('auth'); // ← כדאי גם את זה
+    // קריאה לפונקציה המרכזית של logout
+    this.userService.logout();
+    
+    // עדכון Event למאזינים אחרים
     window.dispatchEvent(new Event('session-user-changed'));
 
+    // ניווט למסך Login
     this.router.navigateByUrl('/profile/login');
   }
-  
 }

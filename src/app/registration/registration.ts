@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class Registration implements OnInit {
   registerForm!: FormGroup;
-  loginForm!: FormGroup;
   currentUser: User | null = null;
   showPassword = false;
   showConfirmPassword = false;
@@ -33,11 +32,6 @@ export class Registration implements OnInit {
       profileImage: ['']
     }, {
       validators: this.passwordMatchValidator
-    });
-
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
     });
 
     // טעינת משתמש נוכחי אם קיים
@@ -141,7 +135,7 @@ export class Registration implements OnInit {
     return !this.registerForm.errors?.['passwordsMismatch'];
   }
 
-  // ✅ פונקציה חדשה - תמונת ברירת מחדל לפי מין
+  // תמונת ברירת מחדל לפי מין
   getDefaultImagePreview(): string {
     const gender = this.genderControl?.value || 'male';
     return gender === 'male' 
@@ -189,29 +183,27 @@ export class Registration implements OnInit {
   removeImage(): void {
     this.previewImage = null;
     this.registerForm.patchValue({ profileImage: '' });
-    // איפוס input file
     const fileInput = document.getElementById('imageInput') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
     }
   }
 
-get allUsers(): User[] {
-  return this.userService.getUsers();
-}
+  get allUsers(): User[] {
+    return this.userService.getUsers();
+  }
 
   onRegister() {
     if (this.registerForm.valid) {
       console.log("onRegister");
       
-      // הסר את confirmPassword לפני שליחה
       const { confirmPassword, ...userData } = this.registerForm.value;
       
       try {
         this.userService.register(userData).subscribe({
           next: () => {
             this.registerForm.reset();
-            this.registerForm.patchValue({ gender: 'male' }); // reset ל-default
+            this.registerForm.patchValue({ gender: 'male' });
             this.previewImage = null;
             alert('ההרשמה בוצעה בהצלחה! כעת תוכל להתחבר');
             this.router.navigateByUrl('/profile/login');
@@ -232,32 +224,11 @@ get allUsers(): User[] {
     }
   }
 
-onLogin() {
-  const { username, password } = this.loginForm.value;
-  console.log("onLogin");
-
-  this.userService.login(username, password).subscribe({
-    next: (user) => {
-      if (user) {
-        this.currentUser = user;
-        alert('התחברת בהצלחה!');
-        this.router.navigateByUrl('/profile/user-details');
-      } else {
-        alert('שם משתמש/אימייל או סיסמה שגויים');
-      }
-    },
-    error: (err) => {
-      console.error('Login error:', err);
-      alert('שגיאה בהתחברות. נסה שוב.');
-    }
-  });
-}
-
   logout() {
     this.userService.logout();
     this.currentUser = null;
-    this.loginForm.reset();
     alert('התנתקת בהצלחה');
+    window.dispatchEvent(new Event('session-user-changed'));
   }
 
   getTodayDate(): string {
