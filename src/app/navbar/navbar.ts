@@ -68,8 +68,8 @@ export class Navbar implements OnInit {
     const gender = user?.gender;
 
     return gender === 'female'
-      ? 'https://ui-avatars.com/api/?name=Female&background=f368e0&color=fff&size=100'
-      : 'https://ui-avatars.com/api/?name=Male&background=0D8ABC&color=fff&size=100';
+      ? 'assets/female-avatar.webp'
+      : 'assets/avatar-male.jpg';
   }
 
   toggleProfileMenu(): void {
