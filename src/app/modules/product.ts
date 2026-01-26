@@ -22,7 +22,7 @@ export class Product {
     categoryId: number,
     description: string,
     category: string,
-    specifications: { [key: string]: string }  // ← תואם ל-JSON
+    specifications: { [key: string]: string }  
   ) {
     this.id = id;
     this.name = name;

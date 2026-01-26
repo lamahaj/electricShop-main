@@ -9,7 +9,7 @@
       <button class="cta-button" routerLink="/catalog">לקטלוג המלא</button>
     </div>
     <div class="hero-overlay"></div>
-  
+
   </section>
   <section class="social-media-section">
     <div class="container">
@@ -36,24 +36,23 @@
     <div class="container">
       <h2 class="section-title">המוצרים הפופולריים שלנו</h2>
       <p class="section-subtitle"> חמשת המוצרים שנמכרו הכי הרבה! 🔥</p>
-      
+
       <div class="row">
         <ng-container *ngFor="let product of popularProducts">
           <div class="col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="card h-100 shadow-sm">
-              
+
               <!-- תג פופולרי -->
-              <span class="badge bg-danger position-absolute top-0 end-0 m-3" 
-                    style="z-index: 10; font-size: 0.9rem;">
+              <span class="badge bg-danger position-absolute top-0 end-0 m-3" style="z-index: 10; font-size: 0.9rem;">
                 🔥 פופולרי
               </span>
-              
+
               <img [src]="product.image" class="card-img-top" [alt]="product.name">
-              
+
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text text-primary">₪{{ product.price }}</p>
-                
+
                 <!-- סטטוס מלאי -->
                 <p *ngIf="product.inStock; else outOfStock" class="text-success mb-3">
                   ✓ במלאי: {{ product.remainingStock }} יחידות
@@ -71,35 +70,23 @@
                     <small class="text-muted fw-bold">{{ product.salesPercentage }}%</small>
                   </div>
                   <div class="progress" style="height: 8px;">
-                    <div 
-                      class="progress-bar" 
-                      [ngClass]="{
+                    <div class="progress-bar" [ngClass]="{
                         'bg-warning': product.salesPercentage >= 50 && product.salesPercentage < 80,
                         'bg-danger': product.salesPercentage >= 80
-                      }"
-                      role="progressbar" 
-                      [style.width.%]="product.salesPercentage"
-                      [attr.aria-valuenow]="product.salesPercentage"
-                      aria-valuemin="0" 
-                      aria-valuemax="100">
+                      }" role="progressbar" [style.width.%]="product.salesPercentage"
+                      [attr.aria-valuenow]="product.salesPercentage" aria-valuemin="0" aria-valuemax="100">
                     </div>
                   </div>
                 </div>
 
-              
-               
-                
-<button 
-  class="btn btn-primary w-100 mb-2"
-  [disabled]="!product.inStock"
-  (click)="addToCart(product)">
-  {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
-</button>
-                                <button 
-                  class="btn btn-primary btn-block w-100"
-                  [routerLink]="['/product', product.id]"
-                  >
-                 מידע נוסף
+
+
+
+                <button class="btn btn-primary w-100 mb-2" [disabled]="!product.inStock" (click)="addToCart(product)">
+                  {{ product.inStock ? 'הוסף לסל' : 'אזל מהמלאי' }}
+                </button>
+                <button class="btn btn-primary btn-block w-100" [routerLink]="['/product', product.id]">
+                  מידע נוסף
                 </button>
               </div>
             </div>
@@ -110,61 +97,49 @@
   </section>
 
   <section class="categories-section">
-  <div class="container">
-    <h2 class="section-title">קטגוריות מובילות</h2>
+    <div class="container">
+      <h2 class="section-title">קטגוריות מובילות</h2>
 
-    <div class="categories-grid">
+      <div class="categories-grid">
 
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 2 }">
-        <div class="category-icon">📱</div>
-        <h3>סמארטפונים וטאבלטים</h3>
-        <p>המבחר הגדול ביותר</p>
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 2 }">
+          <div class="category-icon">📱</div>
+          <h3>סמארטפונים וטאבלטים</h3>
+          <p>המבחר הגדול ביותר</p>
+        </div>
+
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 3}">
+          <div class="category-icon">💻</div>
+          <h3>מחשבים ונייחים</h3>
+          <p>לכל צורך ותקציב</p>
+        </div>
+
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 1}">
+          <div class="category-icon">📺</div>
+          <h3>טלוויזיות</h3>
+          <p>טכנולוגיות חדישות</p>
+        </div>
+
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 4 }">
+          <div class="category-icon">🎧</div>
+          <h3>אודיו ווידאו</h3>
+          <p>איכות שמע מעולה</p>
+        </div>
+
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 5 }">
+          <div class="category-icon">🏠</div>
+          <h3>מוצרי חשמל לבית</h3>
+          <p>חכם ונוח</p>
+        </div>
+
+        <div class="category-card" [routerLink]="['/catalog']" [queryParams]="{ category: 6 }">
+          <div class="category-icon">🎮</div>
+          <h3>גיימינג</h3>
+          <p>לגיימרים המתקדמים</p>
+        </div>
+
       </div>
-
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 3}">
-        <div class="category-icon">💻</div>
-        <h3>מחשבים ונייחים</h3>
-        <p>לכל צורך ותקציב</p>
-      </div>
-
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 1}">
-        <div class="category-icon">📺</div>
-        <h3>טלוויזיות</h3>
-        <p>טכנולוגיות חדישות</p>
-      </div>
-
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 4 }">
-        <div class="category-icon">🎧</div>
-        <h3>אודיו ווידאו</h3>
-        <p>איכות שמע מעולה</p>
-      </div>
-
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 5 }">
-        <div class="category-icon">🏠</div>
-        <h3>מוצרי חשמל לבית</h3>
-        <p>חכם ונוח</p>
-      </div>
-
-      <div class="category-card"
-           [routerLink]="['/catalog']"
-           [queryParams]="{ category: 6 }">
-        <div class="category-icon">🎮</div>
-        <h3>גיימינג</h3>
-        <p>לגיימרים המתקדמים</p>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 </div>
