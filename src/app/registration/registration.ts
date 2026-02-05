@@ -34,11 +34,11 @@ export class Registration implements OnInit {
       validators: this.passwordMatchValidator
     });
 
-    // טעינת משתמש נוכחי אם קיים
+    
     this.currentUser = this.userService.getCurrentUser();
   }
 
-  // Validator לסיסמה חזקה
+  
   strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
@@ -60,7 +60,7 @@ export class Registration implements OnInit {
     } : null;
   }
 
-  // Validator להתאמת סיסמאות
+  
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
@@ -69,7 +69,7 @@ export class Registration implements OnInit {
     return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
   }
 
-  // Validator לגיל - לפחות 13 שנים
+  
   ageValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
 
@@ -85,7 +85,7 @@ export class Registration implements OnInit {
     return age < 13 ? { tooYoung: true } : null;
   }
 
-  // Getters לשדות הטופס
+ 
   get passwordControl() {
     return this.registerForm.get('password');
   }
@@ -106,7 +106,7 @@ export class Registration implements OnInit {
     return this.registerForm.get('gender');
   }
 
-  // בדיקות חוזק סיסמה
+  
   get hasMinLength(): boolean {
     const errors = this.passwordControl?.errors?.['passwordStrength'];
     if (!errors && this.passwordControl?.value) return true;
@@ -135,7 +135,7 @@ export class Registration implements OnInit {
     return !this.registerForm.errors?.['passwordsMismatch'];
   }
 
-  // תמונת ברירת מחדל לפי מין
+  
   getDefaultImagePreview(): string {
     const gender = this.genderControl?.value || 'male';
     return gender === 'male' 
@@ -143,7 +143,7 @@ export class Registration implements OnInit {
       : 'assets/female-avatar.webp';
   }
 
-  // פונקציות תצוגת סיסמה
+  
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -152,19 +152,19 @@ export class Registration implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 
-  // טיפול בבחירת תמונה
+  
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
       
-      // בדיקת סוג קובץ
+     
       if (!file.type.startsWith('image/')) {
         alert('נא לבחור קובץ תמונה בלבד');
         return;
       }
 
-      // בדיקת גודל (מקסימום 5MB)
+      
       if (file.size > 5 * 1024 * 1024) {
         alert('גודל התמונה לא יכול לעבור 5MB');
         return;
@@ -179,7 +179,7 @@ export class Registration implements OnInit {
     }
   }
 
-  // הסרת תמונה
+  
   removeImage(): void {
     this.previewImage = null;
     this.registerForm.patchValue({ profileImage: '' });

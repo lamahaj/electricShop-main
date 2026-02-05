@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../modules/product';
 import { Router } from '@angular/router';
-import { Cart as CartModel, CartProduct } from '../modules/cart'; // ← שינוי חשוב
+import { Cart as CartModel, CartProduct } from '../modules/cart'; 
 import { CartService } from '../services/cart';
 import { UserService } from '../services/user-service';
 
@@ -25,7 +25,7 @@ cart: CartModel = new CartModel(null, [], false, 0);
     this.loadCart();
     this.checkLoginStatus();
 
-    // האזנה לשינויים ב-login
+   
     window.addEventListener('session-user-changed', () => {
       this.checkLoginStatus();
     });

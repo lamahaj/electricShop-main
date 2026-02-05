@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart';
-import { UserService } from '../services/user-service'; // ← הוסף את זה
+import { UserService } from '../services/user-service'; 
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +21,7 @@ export class Navbar implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
-    private userService: UserService // ← הוסף את זה
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -81,18 +81,18 @@ export class Navbar implements OnInit {
     this.router.navigateByUrl('/profile/user-details');
   }
 
-  // ✅ תיקון - קריאה ל-UserService.logout()
+  
   onLogout(): void {
     this.isMenuOpen = false;
     this.isProfileMenuOpen = false;
 
-    // קריאה לפונקציה המרכזית של logout
+   
     this.userService.logout();
     
-    // עדכון Event למאזינים אחרים
+  
     window.dispatchEvent(new Event('session-user-changed'));
 
-    // ניווט למסך Login
+    
     this.router.navigateByUrl('/profile/login');
   }
 }

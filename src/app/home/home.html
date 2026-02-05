@@ -31,7 +31,6 @@
     </div>
   </section>
 
-  <!-- Products Section - עם container ותיקוני עיצוב -->
   <section class="products-section">
     <div class="container">
       <h2 class="section-title">המוצרים הפופולריים שלנו</h2>
@@ -42,7 +41,6 @@
           <div class="col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="card h-100 shadow-sm">
 
-              <!-- תג פופולרי -->
               <span class="badge bg-danger position-absolute top-0 end-0 m-3" style="z-index: 10; font-size: 0.9rem;">
                 🔥 פופולרי
               </span>
@@ -53,7 +51,6 @@
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text text-primary">₪{{ product.price }}</p>
 
-                <!-- סטטוס מלאי -->
                 <p *ngIf="product.inStock; else outOfStock" class="text-success mb-3">
                   ✓ במלאי: {{ product.remainingStock }} יחידות
                 </p>
@@ -63,7 +60,6 @@
                   </p>
                 </ng-template>
 
-                <!-- Progress Bar -->
                 <div class="mb-3">
                   <div class="d-flex justify-content-between mb-1">
                     <small class="text-muted">נמכרו: {{ product.soldCount }}/{{ product.stock }}</small>

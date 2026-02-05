@@ -1,4 +1,4 @@
-<!-- הודעת טעינה -->
+
 
 <div *ngIf="isLoading" class="loading-container text-center p-5">
   <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
@@ -7,7 +7,7 @@
   <p class="mt-3 fs-5">טוען פרטי מוצר...</p>
 </div>
 
-<!-- מוצר לא נמצא -->
+
 <div *ngIf="notFound && !isLoading" class="not-found">
   <div class="error-icon">😕</div>
   <h2>אופס! המוצר לא נמצא</h2>
@@ -17,12 +17,12 @@
   </button>
 </div>
 
-<!-- תוכן המוצר -->
+
 <div class="details-container" *ngIf="product && !isLoading">
 
   <div class="product-layout">
     
-    <!-- עמודה שמאלית - תמונות -->
+    
     <div class="product-gallery">
       <div class="main-image">
         <img [src]="product.image" [alt]="product.name">
@@ -35,10 +35,10 @@
       </div>
     </div>
 
-    <!-- עמודה ימנית - פרטים -->
+   
     <div class="product-details">
       
-      <!-- כותרת ומידע בסיסי -->
+      
       <div class="product-header">
         <span class="category-tag">{{ product.category }}</span>
         <h1>{{ product.name }}</h1>

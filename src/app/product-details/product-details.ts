@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../modules/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../service';
-import { CartService } from '../services/cart'; // ← הוסף import
+import { CartService } from '../services/cart'; 
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +21,7 @@ export class ProductDetails implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private cartService: CartService // ← הוסף inject
+    private cartService: CartService 
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class ProductDetails implements OnInit {
     });
   }
 
-  // ✨ פונקציה חדשה להוספה לעגלה
+  
   addToCart(): void {
     if (!this.product) {
       return;
@@ -70,11 +70,10 @@ export class ProductDetails implements OnInit {
 
     this.cartService.addToCart(this.product);
     
-    // הצגת הודעת הצלחה
+   
     alert(`✅ ${this.product.name} התוסף לעגלה בהצלחה!`);
     
-    // אופציונלי: ניווט לעגלה
-    // this.router.navigate(['/cart']);
+
   }
 
   goBackHome(): void {

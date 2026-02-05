@@ -1,7 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Hero Section -->
+
 <section class="hero-section-register">
   <div class="hero-content">
     <h1 class="hero-title">הצטרפו למשפחת LaGal Store</h1>
@@ -11,16 +11,15 @@
 
 <div class="container py-5">
   
-  <!-- כותרת -->
+  
   <div class="text-center mb-5" *ngIf="!currentUser">
     <h2 class="section-title">יצירת חשבון</h2>
     <p class="section-subtitle">הרשמו כדי להמשיך</p>
   </div>
 
-  <!-- טופס הרשמה בלבד -->
   <div class="row justify-content-center" *ngIf="!currentUser">
     
-    <!-- טופס הרשמה -->
+    
     <div class="col-lg-8 col-md-10">
       <div class="card auth-card shadow-lg border-0">
         <div class="card-body p-4">
@@ -34,9 +33,9 @@
           
           <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
             
-            <!-- שורה 1: שם משתמש + שם מלא -->
+            
             <div class="row">
-              <!-- שם משתמש -->
+              
               <div class="col-md-6 mb-3">
                 <label class="form-label fw-semibold">
                   <i class="fas fa-user ms-2"></i>שם משתמש
@@ -55,7 +54,7 @@
                 </div>
               </div>
 
-              <!-- שם מלא -->
+              
               <div class="col-md-6 mb-3">
                 <label class="form-label fw-semibold">
                   <i class="fas fa-id-card ms-2"></i>שם מלא
@@ -75,7 +74,7 @@
               </div>
             </div>
 
-            <!-- אימייל -->
+           
             <div class="mb-3">
               <label class="form-label fw-semibold">
                 <i class="fas fa-envelope ms-2"></i>כתובת אימייל
@@ -94,9 +93,9 @@
               </div>
             </div>
 
-            <!-- שורה 2: תאריך לידה + מין -->
+            
             <div class="row">
-              <!-- תאריך לידה -->
+              
               <div class="col-md-6 mb-3">
                 <label class="form-label fw-semibold">
                   <i class="fas fa-calendar-alt ms-2"></i>תאריך לידה
@@ -115,7 +114,7 @@
                 </div>
               </div>
 
-              <!-- מין -->
+             
               <div class="col-md-6 mb-3">
                 <label class="form-label fw-semibold">
                   <i class="fas fa-venus-mars ms-2"></i>מין
@@ -146,13 +145,13 @@
               </div>
             </div>
 
-            <!-- תמונת פרופיל -->
+            
             <div class="mb-3">
               <label class="form-label fw-semibold">
                 <i class="fas fa-image ms-2"></i>תמונת פרופיל <small class="text-muted">(אופציונלי)</small>
               </label>
               
-              <!-- תצוגה מקדימה של תמונה שנבחרה -->
+            
               <div *ngIf="previewImage" class="text-center mb-3">
                 <img [src]="previewImage" alt="Preview" class="img-thumbnail" style="max-width: 120px; max-height: 120px; object-fit: cover;">
                 <br>
@@ -161,7 +160,7 @@
                 </button>
               </div>
 
-              <!-- כפתור בחירת תמונה -->
+              
               <div *ngIf="!previewImage">
                 <input 
                   type="file" 
@@ -174,7 +173,7 @@
                   מקסימום 5MB. JPG, PNG, GIF
                 </small>
 
-                <!-- תמונת ברירת מחדל -->
+                
                 <div class="mt-2 text-center">
                   <small class="text-muted d-block mb-1">תמונת ברירת מחדל:</small>
                   <img 
@@ -186,7 +185,7 @@
               </div>
             </div>
 
-            <!-- סיסמה -->
+           
             <div class="mb-3">
               <label class="form-label fw-semibold">
                 <i class="fas fa-lock ms-2"></i>סיסמה
@@ -206,7 +205,7 @@
                 </button>
               </div>
               
-              <!-- אינדיקטורים לחוזק הסיסמה -->
+           
               <div class="password-requirements mt-2" *ngIf="passwordControl?.touched">
                 <small [class.text-success]="hasMinLength" [class.text-danger]="!hasMinLength">
                   <i [class]="hasMinLength ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
@@ -227,7 +226,7 @@
               </div>
             </div>
 
-            <!-- אימות סיסמה -->
+            
             <div class="mb-4">
               <label class="form-label fw-semibold">
                 <i class="fas fa-lock ms-2"></i>אימות סיסמה
@@ -269,7 +268,7 @@
 
   </div>
 
-  <!-- אזור משתמש מחובר -->
+ 
   <div class="row" *ngIf="currentUser">
     <div class="col-12">
       <div class="card welcome-card shadow-lg border-0">

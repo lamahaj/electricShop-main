@@ -1,4 +1,4 @@
-// cart.service.ts
+
 import { Injectable } from '@angular/core';
 import { Cart, CartProduct } from '../modules/cart';
 import { Product } from '../modules/product';
@@ -14,17 +14,16 @@ export class CartService {
     this.cart = new Cart();
   }
 
-  // פונקציה להודעה על שינוי בעגלה
   private notifyCartUpdate(): void {
     window.dispatchEvent(new Event('cart-updated'));
   }
 
-  // קבלת העגלה הנוכחית
+ 
   getCart(): Cart {
     return this.cart;
   }
 
-  // הוספת מוצר לעגלה
+  
   addToCart(product: Product): void {
     const existingCartProduct = this.cart.products.find(
       cp => cp.product.id === product.id
@@ -38,19 +37,19 @@ export class CartService {
     }
 
     this.cart.calculateTotal();
-    this.notifyCartUpdate(); // ← הוספנו
+    this.notifyCartUpdate(); 
   }
 
-  // הסרת מוצר מהעגלה
+  
   removeFromCart(product: Product): void {
     this.cart.products = this.cart.products.filter(
       cp => cp.product.id !== product.id
     );
     this.cart.calculateTotal();
-    this.notifyCartUpdate(); // ← הוספנו
+    this.notifyCartUpdate(); 
   }
 
-  // הוספת כמות למוצר
+  
   increaseQuantity(product: Product): void {
     const cartProduct = this.cart.products.find(
       cp => cp.product.id === product.id
@@ -59,11 +58,11 @@ export class CartService {
     if (cartProduct) {
       cartProduct.quantity++;
       this.cart.calculateTotal();
-      this.notifyCartUpdate(); // ← הוספנו
+      this.notifyCartUpdate(); 
     }
   }
 
-  // הורדת כמות למוצר
+ 
   decreaseQuantity(product: Product): void {
     const cartProduct = this.cart.products.find(
       cp => cp.product.id === product.id
@@ -75,35 +74,35 @@ export class CartService {
         this.cart.calculateTotal();
       } else {
         this.removeFromCart(product);
-        return; // removeFromCart כבר קורא ל-notifyCartUpdate
+        return; 
       }
-      this.notifyCartUpdate(); // ← הוספנו
+      this.notifyCartUpdate(); 
     }
   }
 
-  // עדכון משתמש (לאחר login)
+  
   updateUser(user: User): void {
     this.cart.user = user;
   }
 
-  // ביצוע תשלום וניקוי עגלה
+  
   checkout(): void {
     this.cart.isPaid = true;
     this.clearCart();
   }
 
-  // ניקוי עגלה - שינינו ל-public ✅
+  
   public clearCart(): void {
     this.cart = new Cart(this.cart.user);
-    this.notifyCartUpdate(); // ← הוספנו
+    this.notifyCartUpdate(); 
   }
 
-  // קבלת מספר פריטים בעגלה
+ 
   getCartItemsCount(): number {
     return this.cart.products.reduce((count, cp) => count + cp.quantity, 0);
   }
 
-  // קבלת סכום העגלה
+  
   getTotalAmount(): number {
     return this.cart.totalAmount;
   }

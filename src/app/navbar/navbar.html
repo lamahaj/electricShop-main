@@ -1,19 +1,19 @@
 <nav class="nav">
   <div class="nav__wrap">
 
-    <!-- Logo -->
+    
     <a class="nav__logo" routerLink="/" (click)="isMenuOpen=false">
       <span class="nav__logoIcon">⚡</span>
       <span class="nav__logoText">LaGal Store</span>
     </a>
 
-    <!-- Search (Desktop) -->
+    
     <div class="nav__search nav__search--desktop">
       <span class="nav__searchIcon">🔍</span>
       <input class="nav__searchInput" type="text" placeholder="חפשו מוצרים, מותגים או קטגוריות..." />
     </div>
 
-    <!-- Hamburger (Mobile) -->
+   
     <button class="nav__burger" type="button" (click)="isMenuOpen = !isMenuOpen" aria-label="פתח תפריט">
       <span class="burgerLine" [class.open]="isMenuOpen"></span>
       <span class="burgerLine" [class.open]="isMenuOpen"></span>
@@ -21,19 +21,19 @@
       
     </button>
 
-    <!-- Overlay -->
+    
     <div class="nav__overlay" [class.show]="isMenuOpen" (click)="isMenuOpen=false"></div>
 
-    <!-- Menu -->
+   
     <div class="nav__menu" [class.open]="isMenuOpen">
 
-      <!-- Search (Mobile) -->
+    
       <div class="nav__search nav__search--mobile">
         <span class="nav__searchIcon">🔍</span>
         <input class="nav__searchInput" type="text" placeholder="חפשו מוצרים, מותגים או קטגוריות..." />
       </div>
 
-      <!-- Links -->
+    
       <ul class="nav__links" (click)="isMenuOpen=false">
         <li>
           <a class="nav__link"
@@ -75,10 +75,10 @@
         </li>
       </ul>
 
-      <!-- User area -->
+      
       <div class="nav__user">
 
-        <!-- Not logged in -->
+        
         <div class="nav__auth" *ngIf="!isLoggedIn">
           <button class="nav__btn" type="button" routerLink="/profile/register" (click)="isMenuOpen=false">
             <span class="nav__btnIcon">📝</span>
@@ -90,7 +90,7 @@
           </button>
         </div>
 
-        <!-- Logged in -->
+       
         <div class="nav__profile" *ngIf="isLoggedIn">
           <button class="nav__profileBtn" type="button" (click)="toggleProfileMenu()">
             <img class="nav__avatar" [src]="userImage ? userImage : defaultAvatar()" alt="avatar" />

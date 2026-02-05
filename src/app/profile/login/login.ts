@@ -45,11 +45,10 @@ onLogin(): void {
   this.userService.login(username, password).subscribe({
     next: (user: User | null) => {
       if (user) {
-        // המשתמש נשמר כבר בתוך ה-UserService (currentUser + auth)
-        // אנחנו רק מודיעים ל-navbar להתעדכן (כמו שעשית)
+
         window.dispatchEvent(new Event('session-user-changed'));
 
-        // דרישה: אחרי login מוצלח -> userDetails
+        
         this.router.navigateByUrl('/profile/user-details');
       } else {
         this.loginError = 'שם משתמש או סיסמה שגויים';

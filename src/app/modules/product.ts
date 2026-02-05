@@ -3,20 +3,20 @@ export class Product {
   name: string;
   price: number;
   image: string;
-  remainingStock: number;  // ← שימו לב: זה נקרא remainingStock ב-JSON!
+  remainingStock: number;  
   stock: number;
   brand: string;
   categoryId: number;
   description: string;
   category: string;
-  specifications: { [key: string]: string };  // ← שימו לב: זה נקרא specifications ב-JSON!
+  specifications: { [key: string]: string };  
 
   constructor(
     id: number,
     name: string,
     price: number,
     image: string,
-    remainingStock: number,  // ← תואם ל-JSON
+    remainingStock: number,  
     stock: number,
     brand: string,
     categoryId: number,
@@ -37,7 +37,7 @@ export class Product {
     this.specifications = specifications;
   }
 
-  // Getters מחושבים
+  
   get soldCount(): number {
     return this.stock - this.remainingStock;
   }

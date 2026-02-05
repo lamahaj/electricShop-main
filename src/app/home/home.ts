@@ -20,7 +20,6 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
 
-    // 1) כל המוצרים
     this.productService.getAllProducts().subscribe({
       next: (products: Product[]) => {
         this.products = products;
@@ -32,7 +31,6 @@ export class Home implements OnInit {
       }
     });
 
-    // 2) פופולריים (Top 5)
     this.productService.getPopularProducts().subscribe({
       next: (popular: Product[]) => {
         this.popularProducts = popular;
@@ -46,7 +44,7 @@ export class Home implements OnInit {
 
 
 addToCart(product: Product): void {
-  this.cartService.addToCart(product); // או השם שיש לך בשירות
-  window.dispatchEvent(new Event('cart-updated')); // כדי שהNavbar יעדכן את הבאג׳
+  this.cartService.addToCart(product); 
+  window.dispatchEvent(new Event('cart-updated')); 
 }
 }

@@ -1,6 +1,6 @@
-// cart.model.ts
-import { Product } from './product'; // נתיב לפי המבנה שלך
-import { User } from './user'; // נתיב לפי המבנה שלך
+
+import { Product } from './product'; 
+import { User } from './user'; 
 
 export class CartProduct {
   product: Product;

@@ -3,9 +3,9 @@ export class User {
   username: string = '';
   email: string = '';
   password: string = '';
-  fullName: string = '';           // ← הוספנו
-  birthDate: string = '';           // ← הוספנו (פורמט: YYYY-MM-DD)
-  gender: 'male' | 'female' = 'male';  // ← הוספנו
+  fullName: string = '';           
+  birthDate: string = '';           
+  gender: 'male' | 'female' = 'male';  
   profileImage?: string; 
   isAdmin: boolean = false;           
 
@@ -13,14 +13,14 @@ export class User {
     Object.assign(this, init);
   }
 
-  // Getter לתמונת ברירת מחדל לפי מין
+  
   get defaultImage(): string {
     return this.profileImage || (this.gender === 'male' 
       ? '/assets/avatar-male.jpg' 
       : '/assets/female-avatar.webp');
   }
 
-  // Getter לגיל מחושב
+ 
   get age(): number | null {
     if (!this.birthDate) return null;
     const today = new Date();

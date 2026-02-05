@@ -69,6 +69,6 @@ export class Products implements OnInit, OnChanges {
   }
   addToCart(product: Product): void {
   this.cartService.addToCart(product);
-  window.dispatchEvent(new Event('cart-updated')); // עדכון הבאג' בנאבר
+  window.dispatchEvent(new Event('cart-updated')); 
 }
 }
