@@ -33,7 +33,7 @@ export class UserService {
       throw new Error('אימייל הוא שדה חובה');
     }
 
-    
+    //
     return this.http.get<User[]>(`${this.jsonUrl}?email=${encodeURIComponent(email)}`).pipe(
       switchMap((existing: User[]) => {
         if (existing.length > 0) {
